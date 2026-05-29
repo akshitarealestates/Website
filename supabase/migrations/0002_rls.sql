@@ -5,6 +5,13 @@ set search_path = public as $$
   select exists (select 1 from public.profiles where id = auth.uid() and role = 'admin');
 $$;
 
+-- Seller (or admin) check helper (SECURITY DEFINER avoids RLS recursion on profiles)
+create or replace function public.is_seller()
+returns boolean language sql security definer stable
+set search_path = public as $$
+  select exists (select 1 from public.profiles where id = auth.uid() and role in ('seller', 'admin'));
+$$;
+
 -- Auto-create a profile on signup
 create or replace function public.handle_new_user()
 returns trigger language plpgsql security definer set search_path = public as $$
@@ -46,9 +53,10 @@ create policy "localities admin write" on localities for all using (public.is_ad
 create policy "properties public read" on properties for select
   using (status = 'published' or owner_id = auth.uid() or public.is_admin());
 create policy "properties seller insert" on properties for insert
-  with check (auth.uid() = owner_id and category = 'resell' and source = 'user');
+  with check (auth.uid() = owner_id and category = 'resell' and source = 'user' and public.is_seller());
 create policy "properties seller update" on properties for update
-  using (owner_id = auth.uid()) with check (owner_id = auth.uid() and category = 'resell');
+  using (owner_id = auth.uid() and public.is_seller())
+  with check (owner_id = auth.uid() and category = 'resell' and public.is_seller());
 create policy "properties admin all" on properties for all
   using (public.is_admin()) with check (public.is_admin());
 

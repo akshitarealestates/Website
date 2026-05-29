@@ -185,6 +185,7 @@ export interface Database {
     Views: Record<string, never>;
     Functions: {
       is_admin: { Args: Record<string, never>; Returns: boolean };
+      is_seller: { Args: Record<string, never>; Returns: boolean };
     };
     Enums: {
       user_role: 'buyer' | 'seller' | 'admin';
