@@ -5,6 +5,7 @@ import { Container } from '@/components/ui-kit/container';
 import { SectionHeading } from '@/components/ui-kit/section-heading';
 import { PropertyCard } from '@/components/property/property-card';
 import { SearchBar } from '@/components/property/search-bar';
+import { SmartSearch } from '@/components/ai/smart-search';
 import { ArrowRight } from 'lucide-react';
 
 const VERTICALS = [
@@ -72,9 +73,17 @@ export default function HomePage() {
               Curated commercial spaces, resale homes, and premium projects across Lucknow — each one verified, priced fairly, and matched to your life.
             </p>
 
-            {/* Search bar */}
+            {/* Structured search bar */}
             <div className="mt-10 max-w-3xl">
               <SearchBar localities={localities} />
+            </div>
+
+            {/* Smart NL search */}
+            <div className="mt-6 max-w-3xl">
+              <p className="text-xs text-white/50 mb-3 uppercase tracking-widest">
+                Or describe it in your words
+              </p>
+              <SmartSearch localities={localities.map((l) => ({ name: l.name, slug: l.slug }))} />
             </div>
           </Container>
         </div>
@@ -312,6 +321,12 @@ export default function HomePage() {
               className="inline-flex items-center justify-center gap-2 rounded-full bg-ink text-white px-8 py-3 text-sm font-medium hover:bg-ink/90 transition-colors"
             >
               Browse properties <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href="/valuation"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-gold text-ink px-8 py-3 text-sm font-medium hover:bg-gold/90 transition-colors"
+            >
+              What&apos;s my property worth? <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/contact"

@@ -5,6 +5,7 @@ import { Container } from '@/components/ui-kit/container';
 import { SectionHeading } from '@/components/ui-kit/section-heading';
 import { PropertyCard } from '@/components/property/property-card';
 import { FilterBar } from '@/components/property/filter-bar';
+import { SmartSearch } from '@/components/ai/smart-search';
 import type { PropertyFilters, PropertyCategory } from '@/lib/data/types';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -114,6 +115,16 @@ export default async function PropertiesPage({
       </div>
 
       <Container className="py-10">
+        {/* ── Smart NL search ─────────────────────────────────────────── */}
+        <div className="mb-8 rounded-2xl bg-ink p-5">
+          <p className="text-xs uppercase tracking-widest text-white/50 mb-3">
+            Describe what you&apos;re looking for
+          </p>
+          <SmartSearch
+            localities={localities.map((l) => ({ name: l.name, slug: l.slug }))}
+          />
+        </div>
+
         {/* ── Segment tabs ────────────────────────────────────────────── */}
         <nav
           aria-label="Property category tabs"
