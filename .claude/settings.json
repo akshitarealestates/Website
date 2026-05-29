@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//home/pratap/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/brainstorming/**)",
+      "Bash(scripts/start-server.sh --project-dir /home/pratap/work/Akshita_Realestate_website)",
+      "Bash(grep -q \".superpowers\" /home/pratap/work/Akshita_Realestate_website/.gitignore)",
+      "Bash(git config *)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'Add Akshita Realty design spec *)"
+    ]
+  }
+}

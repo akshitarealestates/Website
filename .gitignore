@@ -1,0 +1,33 @@
+# Superpowers brainstorm artifacts
+.superpowers/
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js
+/.next/
+/out/
+/build
+next-env.d.ts
+
+# Production
+/dist
+
+# Environment
+.env
+.env*.local
+.vercel
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / editor
+.DS_Store
+*.pem
+.idea/
+.vscode/*
+!.vscode/extensions.json
