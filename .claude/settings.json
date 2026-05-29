@@ -27,7 +27,10 @@
       "Bash(npm install *)",
       "Bash(npm run *)",
       "Bash(npm ls *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(npm i *)",
+      "Bash(npm test *)",
+      "Bash(npx tsc *)"
     ]
   }
 }
