@@ -26,6 +26,7 @@ export interface Property {
   amenities: string[]; reraId?: string | null;
   description: string; highlights: string[];
   status: PropertyStatus; source: 'admin' | 'user'; ownerId?: string | null;
+  rejectionReason?: string | null;
   isFeatured: boolean; views: number;
   images: PropertyImage[];
   project?: ProjectDetails | null;

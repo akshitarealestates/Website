@@ -5,6 +5,11 @@ export async function proxy(request: NextRequest) {
   const { response, user, supabase } = await updateSession(request);
   const { pathname } = request.nextUrl;
 
+  // Demo mode: keep cookie handling but skip all auth/role gating.
+  if (process.env.NEXT_PUBLIC_DEMO_AUTH === 'true') {
+    return response;
+  }
+
   const needsAuth = pathname.startsWith('/dashboard') || pathname.startsWith('/admin') || pathname.startsWith('/sell');
   if (needsAuth && !user) {
     const url = request.nextUrl.clone();
