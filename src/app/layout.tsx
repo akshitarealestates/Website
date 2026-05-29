@@ -4,6 +4,7 @@ import './globals.css';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { DemoBanner } from '@/components/layout/demo-banner';
+import { ConciergeWidget } from '@/components/ai/concierge-widget';
 
 const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-fraunces', display: 'swap' });
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans-inter', display: 'swap' });
@@ -21,6 +22,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        {/* Site-wide AI concierge; the widget hides itself on /admin via usePathname. */}
+        <ConciergeWidget />
       </body>
     </html>
   );

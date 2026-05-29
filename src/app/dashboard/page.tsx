@@ -6,6 +6,7 @@ import { getCurrentUser } from '@/lib/auth/session';
 import { listMyListings, listProperties, listLocalities } from '@/lib/data/repo';
 import { formatINR } from '@/lib/format';
 import { FavoritesList, type FavoriteEntry } from '@/components/dashboard/favorites-list';
+import { RecommendedForYou } from '@/components/ai/recommended-for-you';
 
 const STATUS_BADGE: Record<string, string> = {
   pending: 'bg-amber-100 text-amber-800 ring-amber-600/20',
@@ -32,9 +33,11 @@ export default async function DashboardPage() {
   const localityName = (slug: string) =>
     localities.find((l) => l.slug === slug)?.name ?? slug.replace(/-/g, ' ');
 
+  const publishedProperties = listProperties();
+
   // Minimal projection of all published properties for the client favorites island.
   const favoriteMap: Record<string, FavoriteEntry> = {};
-  for (const p of listProperties()) {
+  for (const p of publishedProperties) {
     favoriteMap[p.slug] = {
       slug: p.slug,
       title: p.title,
@@ -149,6 +152,9 @@ export default async function DashboardPage() {
           <FavoritesList propertyMap={favoriteMap} />
         </div>
       </div>
+
+      {/* ── Recommended for you ──────────────────────────────────────── */}
+      <RecommendedForYou properties={publishedProperties} />
 
       {/* ── Account ──────────────────────────────────────────────────── */}
       <div className="mt-14">
