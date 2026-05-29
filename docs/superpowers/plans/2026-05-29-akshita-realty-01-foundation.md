@@ -12,6 +12,20 @@
 
 ---
 
+## Execution notes (actual vs. plan)
+
+- **Stack landed on Next.js 16.2.6 + Tailwind v4.** Theme tokens use `@theme` in `globals.css` (no `tailwind.config`).
+- **Route gating is `src/proxy.ts` (exports `proxy`), not `middleware.ts`.** Next.js 16 renamed the
+  convention; a root `middleware.ts` silently fails to register. Verified against Next 16 docs and the
+  build output (`ƒ Proxy (Middleware)`).
+- **Supabase provisioning deferred** (org at free-project limit). All code, the schema/RLS migration
+  files, and hand-authored `src/types/database.ts` were written; live ops (apply migrations, regenerate
+  types, OAuth config, deploy) are captured in [`../../SUPABASE_ACTIVATION.md`](../../SUPABASE_ACTIVATION.md).
+  The app builds and runs without env values via graceful guards in the header, `updateSession`, `proxy`,
+  dashboard, and the auth form (lazy client creation).
+- **Task 13 (`vercel.ts`) skipped intentionally.** Vercel auto-detects Next.js; deployment is documented
+  in the activation checklist instead of adding the volatile `@vercel/config` dependency.
+
 ## File structure created in this plan
 
 ```
