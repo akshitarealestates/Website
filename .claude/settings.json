@@ -6,7 +6,28 @@
       "Bash(grep -q \".superpowers\" /home/pratap/work/Akshita_Realestate_website/.gitignore)",
       "Bash(git config *)",
       "Bash(git add *)",
-      "Bash(git commit -q -m 'Add Akshita Realty design spec *)"
+      "Bash(git commit -q -m 'Add Akshita Realty design spec *)",
+      "Bash(scripts/stop-server.sh /home/pratap/work/Akshita_Realestate_website/.superpowers/brainstorm/522771-1780063153)",
+      "Bash(npm -v)",
+      "Bash(git commit -q -m 'Add implementation roadmap and Plan 1 \\(Foundation\\) *)",
+      "Bash(git checkout *)",
+      "Read(//home/pratap/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/subagent-driven-development/**)",
+      "mcp__claude_ai_Supabase__list_organizations",
+      "mcp__claude_ai_Supabase__list_projects",
+      "mcp__claude_ai_Supabase__get_cost",
+      "mcp__claude_ai_Supabase__confirm_cost",
+      "mcp__claude_ai_Supabase__create_project",
+      "Bash(git -C /home/pratap/work/Akshita_Realestate_website branch)",
+      "Bash(npx create-next-app@latest --help)",
+      "Bash(npx create-next-app@latest .akshita-tmp --typescript --tailwind --eslint --app --src-dir --import-alias @/* --use-npm --yes)",
+      "Bash(npx create-next-app@latest /tmp/akshita-tmp --typescript --tailwind --eslint --app --src-dir --import-alias @/* --use-npm --yes)",
+      "Bash(ls /tmp/akshita-tmp)",
+      "Read(//tmp/akshita-tmp/**)",
+      "Bash(rsync -av --exclude=README.md --exclude=.gitignore --exclude=docs --exclude=node_modules --exclude=.git /tmp/akshita-tmp/ .)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(npm ls *)",
+      "Bash(git commit *)"
     ]
   }
 }
