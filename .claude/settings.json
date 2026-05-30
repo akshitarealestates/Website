@@ -70,7 +70,12 @@
       "Bash(npx vitest *)",
       "Bash(break)",
       "Bash(node -e \"const l=require\\('lucide-react'\\); ['Share2','Globe','AtSign','MessageCircle','Rss','Link2','Hash','Camera','Users','ThumbsUp'].forEach\\(n=>console.log\\(n, typeof l[n]\\)\\);\")",
-      "Bash(node -e \"const l=require\\('lucide-react'\\); ['BedDouble','Bath','Ruler','Maximize','MapPin','Star','ShieldCheck','BadgeCheck','Award','Users'].forEach\\(n=>console.log\\(n, typeof l[n]\\)\\);\")"
+      "Bash(node -e \"const l=require\\('lucide-react'\\); ['BedDouble','Bath','Ruler','Maximize','MapPin','Star','ShieldCheck','BadgeCheck','Award','Users'].forEach\\(n=>console.log\\(n, typeof l[n]\\)\\);\")",
+      "Bash(node -e \"console.log\\(require\\('/home/pratap/work/Akshita_Realestate_website/node_modules/next/package.json'\\).version\\)\")",
+      "Bash(sed -n '1,15p' src/components/property/favorite-button.tsx)",
+      "Bash(sed -n '1,20p' src/components/property/gallery.tsx)",
+      "Bash(curl -s -D - -o /dev/null \"http://localhost:3000/admin/properties/prestige-golf-residences-sushant/edit\")",
+      "Bash(pkill -f \"next-server\")"
     ],
     "additionalDirectories": [
       "/tmp"

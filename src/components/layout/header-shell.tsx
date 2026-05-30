@@ -93,7 +93,7 @@ export function HeaderShell({ user }: HeaderShellProps) {
       className={[
         'fixed inset-x-0 top-0 z-50 w-full transition-[background-color,box-shadow,backdrop-filter,border-color] duration-500',
         solid
-          ? 'border-b border-black/5 bg-cream-warm/85 backdrop-blur-md shadow-[0_1px_24px_-12px_rgba(15,23,30,0.35)]'
+          ? 'border-b border-ink/8 bg-cream-warm/85 backdrop-blur-md shadow-[0_1px_24px_-12px_rgba(43,33,24,0.35)]'
           : 'border-b border-transparent bg-transparent',
       ].join(' ')}
     >
@@ -122,7 +122,7 @@ export function HeaderShell({ user }: HeaderShellProps) {
                 <NavLink href={item.href} label={item.label} onDark={onDark} />
                 {/* Dropdown */}
                 <div className="invisible absolute left-1/2 top-full z-10 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                  <div className="min-w-[200px] overflow-hidden rounded-2xl border border-black/5 bg-cream-warm/95 p-1.5 shadow-[0_16px_48px_-16px_rgba(15,23,30,0.45)] backdrop-blur-md">
+                  <div className="min-w-[200px] overflow-hidden rounded-2xl border border-ink/8 bg-cream-warm/95 p-1.5 shadow-[0_16px_48px_-16px_rgba(43,33,24,0.45)] backdrop-blur-md">
                     {PROPERTY_MENU.map((m) => (
                       <Link
                         key={m.label}

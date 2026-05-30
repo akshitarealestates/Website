@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { BedDouble, Bath, Ruler, MapPin, Star } from 'lucide-react';
 import type { Property } from '@/lib/data/types';
 import { formatINR, formatArea } from '@/lib/format';
+import { IconButton } from '@/components/ui-kit/icon-button';
 
 const CATEGORY_LABELS: Record<string, string> = {
   commercial: 'Commercial',
@@ -19,10 +20,10 @@ export function PropertyCard({ property }: { property: Property }) {
   return (
     <Link
       href={`/properties/${property.slug}`}
-      className="group block overflow-hidden rounded-2xl border border-ink/5 bg-white shadow-[0_1px_2px_rgba(15,32,43,0.04)] transition-all duration-500 ease-luxe hover:-translate-y-1.5 hover:border-ink/10 hover:shadow-[0_24px_50px_-20px_rgba(15,32,43,0.28)]"
+      className="group flex h-full flex-col rounded-[22px] bg-surface p-3 shadow-[0_10px_30px_rgba(43,33,24,0.08)] transition-all duration-500 ease-luxe hover:-translate-y-1.5 hover:shadow-[0_18px_44px_rgba(43,33,24,0.14)]"
     >
-      {/* Cover image */}
-      <div className="relative aspect-[4/3] overflow-hidden">
+      {/* Floating cover image */}
+      <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
         <Image
           src={image.url}
           alt={image.alt}
@@ -30,67 +31,69 @@ export function PropertyCard({ property }: { property: Property }) {
           className="object-cover transition-transform duration-700 ease-luxe group-hover:scale-[1.07]"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
-        {/* Gradient scrim */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/55 via-ink/5 to-transparent" />
+        {/* Soft scrim only at the very bottom for pill legibility */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/35 to-transparent" />
 
-        {/* Top badges */}
-        <div className="absolute inset-x-3 top-3 flex items-start justify-between gap-2">
-          <span className="rounded-full bg-white/70 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink backdrop-blur-md">
-            {CATEGORY_LABELS[property.category] ?? property.category}
-          </span>
-          {property.isFeatured && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-gold px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink shadow-sm">
-              <Star className="h-3 w-3 fill-current" />
-              Featured
-            </span>
-          )}
-        </div>
-
-        {/* Listing type, bottom-left over scrim */}
-        <span className="absolute bottom-3 left-3 rounded-full bg-ink/55 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-md">
-          For {isRent ? 'Rent' : 'Sale'}
+        {/* Top-left: category pill */}
+        <span className="absolute left-3 top-3 rounded-full bg-surface/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink backdrop-blur">
+          {CATEGORY_LABELS[property.category] ?? property.category}
         </span>
+
+        {/* Top-right: Featured pill */}
+        {property.isFeatured && (
+          <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-gold px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-sm">
+            <Star className="h-3 w-3 fill-current" />
+            Featured
+          </span>
+        )}
+
+        {/* Bottom-left: price pill */}
+        <span className="absolute bottom-3 left-3 inline-flex items-baseline rounded-full bg-ink px-3.5 py-1.5 font-display text-sm font-semibold text-cream shadow-[0_6px_16px_-6px_rgba(43,33,24,0.5)]">
+          {formatINR(property.price)}
+          {isRent && <span className="ml-0.5 font-sans text-[11px] font-normal text-cream/70">/mo</span>}
+        </span>
+
+        {/* Bottom-right: circular arrow button */}
+        <IconButton
+          variant="gold"
+          size="md"
+          className="absolute bottom-3 right-3 transition-transform duration-300 ease-luxe group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+        />
       </div>
 
       {/* Content */}
-      <div className="p-5">
-        {/* Price */}
-        <p className="font-display text-2xl font-semibold leading-none text-ink">
-          <span className="text-gold-deep">{formatINR(property.price)}</span>
-          {isRent && <span className="ml-0.5 font-sans text-sm font-normal text-ink/50">/mo</span>}
-        </p>
-
+      <div className="flex flex-1 flex-col px-1.5 pb-1 pt-3.5">
         {/* Title */}
-        <h3 className="mt-2.5 line-clamp-2 font-display text-base font-medium leading-snug text-ink">
+        <h3 className="line-clamp-2 font-display text-base font-medium leading-snug text-ink">
           {property.title}
         </h3>
 
         {/* Locality */}
-        <p className="mt-1.5 flex items-center gap-1.5 text-xs text-ink/55">
+        <p className="mt-1.5 flex items-center gap-1.5 text-xs text-sand-muted">
           <MapPin className="h-3.5 w-3.5 shrink-0 text-gold-deep/80" />
           <span className="capitalize">{locality}</span>
-          <span className="text-ink/30">·</span>
+          <span className="text-ink/25">·</span>
           <span>{property.city}</span>
         </p>
 
-        {/* Specs */}
+        {/* Spec pills */}
         {(beds != null || property.bathrooms != null || property.carpetAreaSqft != null) && (
-          <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-ink/5 pt-4 text-xs text-ink/70">
+          <div className="mt-3.5 flex flex-wrap items-center gap-1.5">
             {beds != null && (
-              <span className="inline-flex items-center gap-1.5">
-                <BedDouble className="h-4 w-4 text-ink/40" />
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-sky/60 px-2.5 py-1 text-[11px] font-medium text-ink-soft">
+                <BedDouble className="h-3.5 w-3.5 text-gold-deep/80" />
                 {beds} {property.category === 'commercial' ? 'Cabins' : 'BHK'}
               </span>
             )}
             {property.bathrooms != null && (
-              <span className="inline-flex items-center gap-1.5">
-                <Bath className="h-4 w-4 text-ink/40" />
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-sky/60 px-2.5 py-1 text-[11px] font-medium text-ink-soft">
+                <Bath className="h-3.5 w-3.5 text-gold-deep/80" />
                 {property.bathrooms} Bath
               </span>
             )}
             {property.carpetAreaSqft != null && (
-              <span className="inline-flex items-center gap-1.5">
-                <Ruler className="h-4 w-4 text-ink/40" />
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-sky/60 px-2.5 py-1 text-[11px] font-medium text-ink-soft">
+                <Ruler className="h-3.5 w-3.5 text-gold-deep/80" />
                 {formatArea(property.carpetAreaSqft)}
               </span>
             )}

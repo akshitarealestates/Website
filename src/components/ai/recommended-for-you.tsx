@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import type { Property } from '@/lib/data/types';
 import { recommendFromFavorites } from '@/lib/ai/recommend';
-import { PropertyCard } from '@/components/property/property-card';
+import { ListingCard } from '@/components/property/listing-card';
 
 const STORAGE_KEY = 'akshita:favorites';
 
@@ -44,7 +44,7 @@ export function RecommendedForYou({ properties }: { properties: Property[] }) {
       <h2 className="font-display text-2xl font-semibold text-ink">{heading}</h2>
       <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {recs.map((p) => (
-          <PropertyCard key={p.slug} property={p} />
+          <ListingCard key={p.slug} property={p} />
         ))}
       </div>
     </section>

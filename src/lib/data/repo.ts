@@ -124,6 +124,40 @@ export function listSimilar(property: Property, limit = 3): Property[] {
   return scored.slice(0, limit).map((s) => s.p);
 }
 
+// ─── Project helpers ──────────────────────────────────────────────────────────
+
+/**
+ * The lowest configuration price for a project, or null when there are no
+ * configurations (or the property is not a project).
+ */
+export function projectStartingPrice(p: Property): number | null {
+  const configs = p.project?.configurations ?? [];
+  if (configs.length === 0) return null;
+  return configs.reduce(
+    (min, c) => (c.price < min ? c.price : min),
+    configs[0].price,
+  );
+}
+
+/**
+ * A "2–4 BHK" style range parsed from configuration type strings. Returns the
+ * single value (e.g. "3 BHK") when only one BHK count is present, or null when
+ * no numeric BHK can be parsed.
+ */
+export function projectBhkRange(p: Property): string | null {
+  const configs = p.project?.configurations ?? [];
+  const bhks = new Set<number>();
+  for (const c of configs) {
+    const match = c.type.match(/(\d+)\s*BHK/i);
+    if (match) bhks.add(Number(match[1]));
+  }
+  if (bhks.size === 0) return null;
+  const sorted = [...bhks].sort((a, b) => a - b);
+  const lo = sorted[0];
+  const hi = sorted[sorted.length - 1];
+  return lo === hi ? `${lo} BHK` : `${lo}–${hi} BHK`;
+}
+
 // ─── Locality queries ─────────────────────────────────────────────────────────
 
 export function listLocalities(): Locality[] {

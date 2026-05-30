@@ -289,13 +289,59 @@ export function PropertyForm({
             <Field label="Possession date" name="possessionDate">
               <input id="possessionDate" name="possessionDate" type="date" defaultValue={initial?.project?.possessionDate ?? ''} className={inputCls} />
             </Field>
+            <Field label="Launch status" name="launchStatus">
+              <input id="launchStatus" name="launchStatus" defaultValue={initial?.project?.launchStatus ?? ''} placeholder="e.g. New Launch / Ready to Move" className={inputCls} />
+            </Field>
             <Field label="Project status" name="projectStatus">
               <input id="projectStatus" name="projectStatus" defaultValue={initial?.project?.projectStatus ?? ''} placeholder="e.g. Under construction" className={inputCls} />
+            </Field>
+            <Field label="Project RERA ID" name="projectReraId">
+              <input id="projectReraId" name="projectReraId" defaultValue={initial?.project?.reraId ?? ''} className={inputCls} />
             </Field>
             <Field label="Total units" name="totalUnits">
               <input id="totalUnits" name="totalUnits" type="number" min={0} defaultValue={initial?.project?.totalUnits ?? ''} className={inputCls} />
             </Field>
           </div>
+
+          <div className="mt-4 space-y-4">
+            <Field label="About (overview)" name="about">
+              <textarea
+                id="about"
+                name="about"
+                rows={3}
+                defaultValue={initial?.project?.about ?? ''}
+                className={inputCls}
+              />
+            </Field>
+            <Field label="Extended amenities (one per line)" name="amenitiesExtended">
+              <textarea
+                id="amenitiesExtended"
+                name="amenitiesExtended"
+                rows={4}
+                defaultValue={(initial?.project?.amenitiesExtended ?? []).join('\n')}
+                className={inputCls}
+              />
+            </Field>
+            <Field label="Location highlights (one per line)" name="locationHighlights">
+              <textarea
+                id="locationHighlights"
+                name="locationHighlights"
+                rows={3}
+                defaultValue={(initial?.project?.locationHighlights ?? []).join('\n')}
+                className={inputCls}
+              />
+            </Field>
+            <Field label="Gallery image URLs (one per line)" name="gallery">
+              <textarea
+                id="gallery"
+                name="gallery"
+                rows={3}
+                defaultValue={(initial?.project?.gallery ?? []).join('\n')}
+                className={inputCls}
+              />
+            </Field>
+          </div>
+
           <div className="mt-4">
             <p className={labelCls}>Configurations</p>
             <div className="mt-2">
