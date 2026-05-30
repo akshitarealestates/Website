@@ -5,8 +5,10 @@ const NAV = [
   { href: '/properties?category=commercial', label: 'Commercial' },
   { href: '/properties?category=resell', label: 'Resell' },
   { href: '/properties?category=premium_project', label: 'Premium Projects' },
+  { href: '/valuation', label: 'Valuation' },
   { href: '/insights', label: 'Insights' },
   { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export async function SiteHeader() {

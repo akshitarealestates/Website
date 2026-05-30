@@ -458,10 +458,3 @@ export function deleteLocality(slug: string): boolean {
   localityStore.splice(idx, 1);
   return true;
 }
-
-// ─── Internal / Admin ─────────────────────────────────────────────────────────
-
-/** Returns ALL properties regardless of status — for admin/moderation use only */
-export function _allPropertiesForAdmin(): Property[] {
-  return propertyStore;
-}

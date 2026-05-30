@@ -181,18 +181,6 @@ export function ValuationTool({ localities, estimateAction, leadAction }: Valuat
             </p>
           </div>
 
-          {/* Hidden context for the lead message */}
-          <input
-            type="hidden"
-            name="leadMessage"
-            form="lead-form"
-            value={
-              estimateState.propertyType && estimateState.areaSqft && estimateState.localitySlug
-                ? `Valuation request: ${estimateState.propertyType} ${estimateState.areaSqft} sqft in ${estimateState.localitySlug}, est ${estimateState.low ? formatINR(estimateState.low) : ''}–${estimateState.high ? formatINR(estimateState.high) : ''}`
-                : 'Valuation request'
-            }
-          />
-
           <form id="lead-form" action={leadFormAction} className="space-y-4">
             <input type="hidden" name="leadMessage" value={
               estimateState.propertyType && estimateState.areaSqft && estimateState.localitySlug

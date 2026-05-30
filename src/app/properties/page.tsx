@@ -6,7 +6,7 @@ import { SectionHeading } from '@/components/ui-kit/section-heading';
 import { PropertyCard } from '@/components/property/property-card';
 import { FilterBar } from '@/components/property/filter-bar';
 import { SmartSearch } from '@/components/ai/smart-search';
-import type { PropertyFilters, PropertyCategory } from '@/lib/data/types';
+import type { PropertyFilters, PropertyCategory, ListingType } from '@/lib/data/types';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -19,6 +19,8 @@ const VALID_CATEGORIES = new Set<PropertyCategory>([
 ]);
 
 const VALID_SORTS = new Set(['recent', 'price_asc', 'price_desc']);
+
+const VALID_LISTING_TYPES = new Set<ListingType>(['sale', 'rent']);
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -37,7 +39,9 @@ function parseFilters(raw: RawParams): PropertyFilters {
         ? (category as PropertyCategory)
         : undefined,
 
-    listingType: undefined, // not surfaced in UI yet
+    listingType: VALID_LISTING_TYPES.has(str(raw.listingType) as ListingType)
+      ? (str(raw.listingType) as ListingType)
+      : undefined,
 
     localitySlug: str(raw.localitySlug) || undefined,
 

@@ -63,8 +63,11 @@ export async function POST(req: Request) {
       }));
   }
 
-  // Capture the lead when the concierge asked for contact details and we have them.
-  if (result.captureLead && name && phone) {
+  // Capture the lead whenever the visitor has supplied contact details. The widget
+  // reveals name/phone fields once the concierge asks for them, and the visitor sends
+  // them on a follow-up turn whose text may not re-match the contact intent — so we
+  // capture on the presence of name + phone, not on result.captureLead alone.
+  if (name && phone) {
     createLead({
       name,
       phone,
