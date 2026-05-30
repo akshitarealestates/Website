@@ -10,6 +10,17 @@
   --color-sky: #AEBFD1;
   --color-cream: #F6F4EF;
   --color-gold: #C89B3C;
+
+  /* Refinements (new tokens — existing utilities untouched) */
+  --color-cream-warm: #F8F5EF;   /* a touch warmer for surfaces */
+  --color-gold-deep: #B8862F;    /* richer gold for hovers / accents */
+  --color-charcoal: #0F171E;     /* deep section background */
+  --color-ink-soft: #233140;     /* softened ink for secondary text */
+
+  --default-transition-duration: 200ms;
+  --default-transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Font utilities — use @theme inline because these reference CSS vars set by next/font */
@@ -136,5 +147,29 @@
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
   }
+
+  /* Tasteful text selection */
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-gold) 32%, transparent);
+    color: var(--color-ink);
+  }
+
+  /* Subtle, consistent focus ring */
+  :focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--color-gold) 70%, transparent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
 }

@@ -4,8 +4,7 @@ import { listFeatured, listLocalities, listBlogPosts } from '@/lib/data/repo';
 import { Container } from '@/components/ui-kit/container';
 import { SectionHeading } from '@/components/ui-kit/section-heading';
 import { PropertyCard } from '@/components/property/property-card';
-import { SearchBar } from '@/components/property/search-bar';
-import { SmartSearch } from '@/components/ai/smart-search';
+import { Hero } from '@/components/home/hero';
 import { ArrowRight } from 'lucide-react';
 
 const VERTICALS = [
@@ -39,55 +38,13 @@ export default function HomePage() {
   const featured = listFeatured(6);
   const localities = listLocalities();
   const posts = listBlogPosts({ publishedOnly: true }).slice(0, 3);
-  const heroProperty = featured[0];
-  const heroImage = heroProperty?.images[0]?.url ??
-    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1800&q=80';
 
   return (
     <>
       {/* ── 1. HERO ───────────────────────────────────────────────────── */}
-      <section className="relative min-h-[92vh] flex flex-col justify-end overflow-hidden">
-        {/* Background image */}
-        <Image
-          src={heroImage}
-          alt="Premium real estate in Lucknow"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        {/* Dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/20 via-ink/40 to-ink/80" />
-
-        {/* Hero content */}
-        <div className="relative z-10 pb-16 pt-32">
-          <Container>
-            <p className="text-xs uppercase tracking-[0.25em] text-white/70 mb-4">
-              Lucknow · Premium Real Estate
-            </p>
-            <h1 className="font-display text-5xl font-semibold leading-[1.05] text-white md:text-7xl max-w-3xl">
-              Redefining<br />
-              <em className="italic font-normal">modern living</em>
-            </h1>
-            <p className="mt-6 max-w-xl text-white/80 text-base md:text-lg leading-relaxed">
-              Curated commercial spaces, resale homes, and premium projects across Lucknow — each one verified, priced fairly, and matched to your life.
-            </p>
-
-            {/* Structured search bar */}
-            <div className="mt-10 max-w-3xl">
-              <SearchBar localities={localities} />
-            </div>
-
-            {/* Smart NL search */}
-            <div className="mt-6 max-w-3xl">
-              <p className="text-xs text-white/50 mb-3 uppercase tracking-widest">
-                Or describe it in your words
-              </p>
-              <SmartSearch localities={localities.map((l) => ({ name: l.name, slug: l.slug }))} />
-            </div>
-          </Container>
-        </div>
-      </section>
+      <Hero
+        localities={localities.map((l) => ({ name: l.name, slug: l.slug }))}
+      />
 
       {/* ── 2. ABOUT STRIP ────────────────────────────────────────────── */}
       <section className="py-20 bg-cream border-b border-black/5">
