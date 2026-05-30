@@ -24,7 +24,7 @@ create table profiles (
 
 -- Localities
 create table localities (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   name text not null,
   city text not null default 'Lucknow',
   slug text unique not null,
@@ -38,7 +38,7 @@ create table localities (
 
 -- Properties
 create table properties (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   slug text unique not null,
   title text not null,
   category property_category not null,
@@ -79,7 +79,7 @@ create index properties_featured_idx on properties(is_featured) where is_feature
 
 -- Property images
 create table property_images (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   property_id uuid not null references properties(id) on delete cascade,
   storage_path text not null,
   alt text,
@@ -102,7 +102,7 @@ create table project_details (
 
 -- Leads
 create table leads (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   name text not null,
   phone text not null,
   email text,
@@ -117,7 +117,7 @@ create index leads_status_idx on leads(status);
 
 -- Valuations
 create table valuations (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   name text not null,
   phone text not null,
   email text,
@@ -140,7 +140,7 @@ create table favorites (
 
 -- Saved searches
 create table saved_searches (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   user_id uuid not null references profiles(id) on delete cascade,
   label text,
   filters jsonb not null default '{}',
@@ -150,12 +150,12 @@ create table saved_searches (
 
 -- Concierge chat
 create table chat_sessions (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   user_id uuid references profiles(id) on delete set null,
   created_at timestamptz not null default now()
 );
 create table chat_messages (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   session_id uuid not null references chat_sessions(id) on delete cascade,
   role text not null,
   content text not null,
@@ -164,7 +164,7 @@ create table chat_messages (
 
 -- Blog
 create table blog_posts (
-  id uuid primary key default uuid_generate_v4(),
+  id uuid primary key default gen_random_uuid(),
   slug text unique not null,
   title text not null,
   cover_path text,

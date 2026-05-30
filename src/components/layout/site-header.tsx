@@ -1,27 +1,18 @@
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase/server';
+import { getCurrentUser } from '@/lib/auth/session';
 
 const NAV = [
   { href: '/properties?category=commercial', label: 'Commercial' },
   { href: '/properties?category=resell', label: 'Resell' },
   { href: '/properties?category=premium_project', label: 'Premium Projects' },
+  { href: '/valuation', label: 'Valuation' },
   { href: '/insights', label: 'Insights' },
   { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
 ];
 
-async function getUser() {
-  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return null; // Supabase not configured yet
-  try {
-    const supabase = await createClient();
-    const { data } = await supabase.auth.getUser();
-    return data.user;
-  } catch {
-    return null;
-  }
-}
-
 export async function SiteHeader() {
-  const user = await getUser();
+  const user = await getCurrentUser();
   return (
     <header className="sticky top-0 z-40 w-full border-b border-black/5 bg-cream/80 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
@@ -35,7 +26,12 @@ export async function SiteHeader() {
         </nav>
         <div className="flex items-center gap-3">
           {user ? (
-            <Link href="/dashboard" className="text-sm">Dashboard</Link>
+            <>
+              {user.role === 'admin' && (
+                <Link href="/admin" className="text-sm">Admin</Link>
+              )}
+              <Link href="/dashboard" className="text-sm">Dashboard</Link>
+            </>
           ) : (
             <Link href="/login" className="rounded-full bg-ink px-4 py-2 text-sm text-white">Log in</Link>
           )}

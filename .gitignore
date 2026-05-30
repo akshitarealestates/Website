@@ -34,3 +34,6 @@ yarn-error.log*
 
 # TS build cache
 *.tsbuildinfo
+
+# Other tools / CLI temp
+.antigravitycli/

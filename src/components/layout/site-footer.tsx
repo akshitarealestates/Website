@@ -26,7 +26,10 @@ export function SiteFooter() {
         </div>
         <div className="text-sm">
           <p className="mb-3 text-white">Sell with us</p>
-          <ul className="space-y-2"><li><Link href="/sell">List your property</Link></li></ul>
+          <ul className="space-y-2">
+            <li><Link href="/sell">List your property</Link></li>
+            <li><Link href="/valuation">Property valuation</Link></li>
+          </ul>
         </div>
       </div>
       <div className="border-t border-white/10 py-5 text-center text-xs text-white/50">
