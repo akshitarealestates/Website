@@ -4,8 +4,10 @@ import { listFeatured, listLocalities, listBlogPosts } from '@/lib/data/repo';
 import { Container } from '@/components/ui-kit/container';
 import { SectionHeading } from '@/components/ui-kit/section-heading';
 import { PropertyCard } from '@/components/property/property-card';
-import { SearchBar } from '@/components/property/search-bar';
-import { SmartSearch } from '@/components/ai/smart-search';
+import { Hero } from '@/components/home/hero';
+import { TrustBand } from '@/components/home/trust-band';
+import { Testimonials } from '@/components/home/testimonials';
+import { Reveal } from '@/components/ui-kit/reveal';
 import { ArrowRight } from 'lucide-react';
 
 const VERTICALS = [
@@ -39,115 +41,83 @@ export default function HomePage() {
   const featured = listFeatured(6);
   const localities = listLocalities();
   const posts = listBlogPosts({ publishedOnly: true }).slice(0, 3);
-  const heroProperty = featured[0];
-  const heroImage = heroProperty?.images[0]?.url ??
-    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1800&q=80';
 
   return (
     <>
       {/* ── 1. HERO ───────────────────────────────────────────────────── */}
-      <section className="relative min-h-[92vh] flex flex-col justify-end overflow-hidden">
-        {/* Background image */}
-        <Image
-          src={heroImage}
-          alt="Premium real estate in Lucknow"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        {/* Dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/20 via-ink/40 to-ink/80" />
-
-        {/* Hero content */}
-        <div className="relative z-10 pb-16 pt-32">
-          <Container>
-            <p className="text-xs uppercase tracking-[0.25em] text-white/70 mb-4">
-              Lucknow · Premium Real Estate
-            </p>
-            <h1 className="font-display text-5xl font-semibold leading-[1.05] text-white md:text-7xl max-w-3xl">
-              Redefining<br />
-              <em className="italic font-normal">modern living</em>
-            </h1>
-            <p className="mt-6 max-w-xl text-white/80 text-base md:text-lg leading-relaxed">
-              Curated commercial spaces, resale homes, and premium projects across Lucknow — each one verified, priced fairly, and matched to your life.
-            </p>
-
-            {/* Structured search bar */}
-            <div className="mt-10 max-w-3xl">
-              <SearchBar localities={localities} />
-            </div>
-
-            {/* Smart NL search */}
-            <div className="mt-6 max-w-3xl">
-              <p className="text-xs text-white/50 mb-3 uppercase tracking-widest">
-                Or describe it in your words
-              </p>
-              <SmartSearch localities={localities.map((l) => ({ name: l.name, slug: l.slug }))} />
-            </div>
-          </Container>
-        </div>
-      </section>
+      <Hero
+        localities={localities.map((l) => ({ name: l.name, slug: l.slug }))}
+      />
 
       {/* ── 2. ABOUT STRIP ────────────────────────────────────────────── */}
-      <section className="py-20 bg-cream border-b border-black/5">
+      <section className="py-24 bg-cream">
         <Container>
-          <p className="max-w-4xl text-2xl md:text-4xl font-display font-semibold leading-snug text-ink">
-            Akshita Realty handles all types of property transactions across Lucknow, offering each client a{' '}
-            <em className="italic font-normal">seamless</em> and{' '}
-            <em className="italic font-normal">personalised</em> experience.
-          </p>
-          <div className="mt-8 flex gap-4">
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-gold transition-colors"
-            >
-              Our story <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 text-sm font-medium text-ink/60 hover:text-ink transition-colors"
-            >
-              Get in touch <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.2em] text-ink/50 mb-5">Akshita Realty</p>
+            <p className="max-w-4xl text-2xl md:text-4xl font-display font-semibold leading-snug text-ink text-balance">
+              We handle every kind of property transaction across Lucknow, giving each client a{' '}
+              <em className="italic font-normal text-gold-deep">seamless</em> and{' '}
+              <em className="italic font-normal text-gold-deep">personalised</em> experience.
+            </p>
+            <div className="mt-8 flex gap-6">
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-gold transition-colors"
+              >
+                Our story <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 text-sm font-medium text-ink/60 hover:text-ink transition-colors"
+              >
+                Get in touch <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </Reveal>
         </Container>
       </section>
 
+      {/* ── 2b. TRUST BAND ────────────────────────────────────────────── */}
+      <TrustBand />
+
       {/* ── 3. STATS BAND ─────────────────────────────────────────────── */}
-      <section className="bg-ink text-white py-16">
+      <section className="bg-ink text-white py-20">
         <Container>
-          <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
-            {[
-              { value: '2012', label: 'Year founded' },
-              { value: String(localities.length), label: 'Localities covered' },
-              { value: '40+', label: 'Specialists' },
-              { value: '2,600+', label: 'Happy buyers' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center md:text-left">
-                <p className="font-display text-5xl font-semibold text-gold">{stat.value}</p>
-                <p className="mt-1 text-sm text-white/60">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+          <Reveal>
+            <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
+              {[
+                { value: '2012', label: 'Year founded' },
+                { value: String(localities.length), label: 'Localities covered' },
+                { value: '40+', label: 'Specialists' },
+                { value: '2,600+', label: 'Happy buyers' },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center md:text-left">
+                  <p className="font-display text-5xl font-semibold text-gold">{stat.value}</p>
+                  <p className="mt-2 text-sm text-white/60">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </Container>
       </section>
 
       {/* ── 4. THREE VERTICALS ────────────────────────────────────────── */}
-      <section className="py-24 bg-cream">
+      <section className="py-24 bg-white">
         <Container>
-          <SectionHeading
-            overline="What we offer"
-            title="Find your fit"
-            italicWord="fit"
-            className="mb-12"
-          />
+          <Reveal>
+            <SectionHeading
+              overline="What we offer"
+              title="Find your fit"
+              italicWord="fit"
+              className="mb-12"
+            />
+          </Reveal>
           <div className="grid gap-8 md:grid-cols-3">
-            {VERTICALS.map((v) => (
+            {VERTICALS.map((v, i) => (
+              <Reveal key={v.href} delay={i * 0.08} className="h-full">
               <Link
-                key={v.href}
                 href={v.href}
-                className="group relative overflow-hidden rounded-3xl bg-ink text-white aspect-[3/4] flex flex-col justify-end"
+                className="group relative h-full overflow-hidden rounded-3xl bg-ink text-white aspect-[3/4] flex flex-col justify-end"
               >
                 <Image
                   src={v.imageUrl}
@@ -165,32 +135,37 @@ export default function HomePage() {
                   </span>
                 </div>
               </Link>
+              </Reveal>
             ))}
           </div>
         </Container>
       </section>
 
       {/* ── 5. FEATURED PROPERTIES ────────────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-cream">
         <Container>
-          <div className="flex items-end justify-between mb-12">
-            <SectionHeading
-              overline="Handpicked for you"
-              title="Best properties"
-              italicWord="properties"
-            />
-            <Link
-              href="/properties"
-              className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-ink/60 hover:text-ink transition-colors"
-            >
-              View all <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+          <Reveal>
+            <div className="flex items-end justify-between mb-12">
+              <SectionHeading
+                overline="Handpicked for you"
+                title="Best properties"
+                italicWord="properties"
+              />
+              <Link
+                href="/properties"
+                className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-ink/60 hover:text-ink transition-colors"
+              >
+                View all <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </Reveal>
 
           {featured.length > 0 ? (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {featured.map((property) => (
-                <PropertyCard key={property.id} property={property} />
+              {featured.map((property, i) => (
+                <Reveal key={property.id} delay={(i % 3) * 0.08} className="h-full">
+                  <PropertyCard property={property} />
+                </Reveal>
               ))}
             </div>
           ) : (
@@ -211,6 +186,7 @@ export default function HomePage() {
       {/* ── 6. PROPERTY MANAGEMENT ────────────────────────────────────── */}
       <section className="bg-ink text-white py-24">
         <Container>
+          <Reveal>
           <div className="grid gap-12 md:grid-cols-2 items-center">
             {/* Image */}
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden order-last md:order-first">
@@ -252,32 +228,35 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
+          </Reveal>
         </Container>
       </section>
 
       {/* ── 7. INSIGHTS TEASER ────────────────────────────────────────── */}
       <section className="py-24 bg-cream">
         <Container>
-          <div className="flex items-end justify-between mb-12">
-            <SectionHeading
-              overline="From the team"
-              title="From our insights"
-              italicWord="insights"
-            />
-            <Link
-              href="/insights"
-              className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-ink/60 hover:text-ink transition-colors"
-            >
-              All articles <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+          <Reveal>
+            <div className="flex items-end justify-between mb-12">
+              <SectionHeading
+                overline="From the team"
+                title="From our insights"
+                italicWord="insights"
+              />
+              <Link
+                href="/insights"
+                className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-ink/60 hover:text-ink transition-colors"
+              >
+                All articles <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </Reveal>
 
           <div className="grid gap-8 md:grid-cols-3">
-            {posts.map((post) => (
+            {posts.map((post, i) => (
+              <Reveal key={post.id} delay={(i % 3) * 0.08} className="h-full">
               <Link
-                key={post.id}
                 href={`/insights/${post.slug}`}
-                className="group block rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+                className="group block h-full rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <Image
@@ -300,16 +279,23 @@ export default function HomePage() {
                   </p>
                 </div>
               </Link>
+              </Reveal>
             ))}
           </div>
         </Container>
       </section>
 
+      {/* ── 7b. TESTIMONIALS ──────────────────────────────────────────── */}
+      <Testimonials />
+
       {/* ── 8. CTA ────────────────────────────────────────────────────── */}
-      <section className="py-24 bg-white border-t border-black/5">
+      <section className="py-28 bg-white border-t border-black/5">
         <Container className="text-center">
+          <Reveal>
+          <p className="text-xs uppercase tracking-[0.2em] text-gold-deep mb-4">Get started</p>
           <SectionHeading
             title="Ready to find your place?"
+            italicWord="place"
             className="mx-auto max-w-2xl [&_h2]:text-center"
           />
           <p className="mt-5 text-ink/60 max-w-lg mx-auto">
@@ -335,6 +321,7 @@ export default function HomePage() {
               Contact us
             </Link>
           </div>
+          </Reveal>
         </Container>
       </section>
     </>

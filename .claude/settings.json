@@ -67,7 +67,10 @@
       "Bash(timeout 25 npm run dev > /tmp/dev-out.txt 2>&1 || true)",
       "Bash(curl -s \"http://localhost:3000/properties?category=resell\")",
       "Bash(curl -s \"http://localhost:3000/properties\")",
-      "Bash(npx vitest *)"
+      "Bash(npx vitest *)",
+      "Bash(break)",
+      "Bash(node -e \"const l=require\\('lucide-react'\\); ['Share2','Globe','AtSign','MessageCircle','Rss','Link2','Hash','Camera','Users','ThumbsUp'].forEach\\(n=>console.log\\(n, typeof l[n]\\)\\);\")",
+      "Bash(node -e \"const l=require\\('lucide-react'\\); ['BedDouble','Bath','Ruler','Maximize','MapPin','Star','ShieldCheck','BadgeCheck','Award','Users'].forEach\\(n=>console.log\\(n, typeof l[n]\\)\\);\")"
     ],
     "additionalDirectories": [
       "/tmp"
