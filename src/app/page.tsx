@@ -5,6 +5,9 @@ import { Container } from '@/components/ui-kit/container';
 import { SectionHeading } from '@/components/ui-kit/section-heading';
 import { PropertyCard } from '@/components/property/property-card';
 import { Hero } from '@/components/home/hero';
+import { TrustBand } from '@/components/home/trust-band';
+import { Testimonials } from '@/components/home/testimonials';
+import { Reveal } from '@/components/ui-kit/reveal';
 import { ArrowRight } from 'lucide-react';
 
 const VERTICALS = [
@@ -47,64 +50,74 @@ export default function HomePage() {
       />
 
       {/* ── 2. ABOUT STRIP ────────────────────────────────────────────── */}
-      <section className="py-20 bg-cream border-b border-black/5">
+      <section className="py-24 bg-cream">
         <Container>
-          <p className="max-w-4xl text-2xl md:text-4xl font-display font-semibold leading-snug text-ink">
-            Akshita Realty handles all types of property transactions across Lucknow, offering each client a{' '}
-            <em className="italic font-normal">seamless</em> and{' '}
-            <em className="italic font-normal">personalised</em> experience.
-          </p>
-          <div className="mt-8 flex gap-4">
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-gold transition-colors"
-            >
-              Our story <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 text-sm font-medium text-ink/60 hover:text-ink transition-colors"
-            >
-              Get in touch <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.2em] text-ink/50 mb-5">Akshita Realty</p>
+            <p className="max-w-4xl text-2xl md:text-4xl font-display font-semibold leading-snug text-ink text-balance">
+              We handle every kind of property transaction across Lucknow, giving each client a{' '}
+              <em className="italic font-normal text-gold-deep">seamless</em> and{' '}
+              <em className="italic font-normal text-gold-deep">personalised</em> experience.
+            </p>
+            <div className="mt-8 flex gap-6">
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-gold transition-colors"
+              >
+                Our story <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 text-sm font-medium text-ink/60 hover:text-ink transition-colors"
+              >
+                Get in touch <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </Reveal>
         </Container>
       </section>
 
+      {/* ── 2b. TRUST BAND ────────────────────────────────────────────── */}
+      <TrustBand />
+
       {/* ── 3. STATS BAND ─────────────────────────────────────────────── */}
-      <section className="bg-ink text-white py-16">
+      <section className="bg-ink text-white py-20">
         <Container>
-          <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
-            {[
-              { value: '2012', label: 'Year founded' },
-              { value: String(localities.length), label: 'Localities covered' },
-              { value: '40+', label: 'Specialists' },
-              { value: '2,600+', label: 'Happy buyers' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center md:text-left">
-                <p className="font-display text-5xl font-semibold text-gold">{stat.value}</p>
-                <p className="mt-1 text-sm text-white/60">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+          <Reveal>
+            <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
+              {[
+                { value: '2012', label: 'Year founded' },
+                { value: String(localities.length), label: 'Localities covered' },
+                { value: '40+', label: 'Specialists' },
+                { value: '2,600+', label: 'Happy buyers' },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center md:text-left">
+                  <p className="font-display text-5xl font-semibold text-gold">{stat.value}</p>
+                  <p className="mt-2 text-sm text-white/60">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </Container>
       </section>
 
       {/* ── 4. THREE VERTICALS ────────────────────────────────────────── */}
-      <section className="py-24 bg-cream">
+      <section className="py-24 bg-white">
         <Container>
-          <SectionHeading
-            overline="What we offer"
-            title="Find your fit"
-            italicWord="fit"
-            className="mb-12"
-          />
+          <Reveal>
+            <SectionHeading
+              overline="What we offer"
+              title="Find your fit"
+              italicWord="fit"
+              className="mb-12"
+            />
+          </Reveal>
           <div className="grid gap-8 md:grid-cols-3">
-            {VERTICALS.map((v) => (
+            {VERTICALS.map((v, i) => (
+              <Reveal key={v.href} delay={i * 0.08} className="h-full">
               <Link
-                key={v.href}
                 href={v.href}
-                className="group relative overflow-hidden rounded-3xl bg-ink text-white aspect-[3/4] flex flex-col justify-end"
+                className="group relative h-full overflow-hidden rounded-3xl bg-ink text-white aspect-[3/4] flex flex-col justify-end"
               >
                 <Image
                   src={v.imageUrl}
@@ -122,32 +135,37 @@ export default function HomePage() {
                   </span>
                 </div>
               </Link>
+              </Reveal>
             ))}
           </div>
         </Container>
       </section>
 
       {/* ── 5. FEATURED PROPERTIES ────────────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-cream">
         <Container>
-          <div className="flex items-end justify-between mb-12">
-            <SectionHeading
-              overline="Handpicked for you"
-              title="Best properties"
-              italicWord="properties"
-            />
-            <Link
-              href="/properties"
-              className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-ink/60 hover:text-ink transition-colors"
-            >
-              View all <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+          <Reveal>
+            <div className="flex items-end justify-between mb-12">
+              <SectionHeading
+                overline="Handpicked for you"
+                title="Best properties"
+                italicWord="properties"
+              />
+              <Link
+                href="/properties"
+                className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-ink/60 hover:text-ink transition-colors"
+              >
+                View all <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </Reveal>
 
           {featured.length > 0 ? (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {featured.map((property) => (
-                <PropertyCard key={property.id} property={property} />
+              {featured.map((property, i) => (
+                <Reveal key={property.id} delay={(i % 3) * 0.08} className="h-full">
+                  <PropertyCard property={property} />
+                </Reveal>
               ))}
             </div>
           ) : (
@@ -168,6 +186,7 @@ export default function HomePage() {
       {/* ── 6. PROPERTY MANAGEMENT ────────────────────────────────────── */}
       <section className="bg-ink text-white py-24">
         <Container>
+          <Reveal>
           <div className="grid gap-12 md:grid-cols-2 items-center">
             {/* Image */}
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden order-last md:order-first">
@@ -209,32 +228,35 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
+          </Reveal>
         </Container>
       </section>
 
       {/* ── 7. INSIGHTS TEASER ────────────────────────────────────────── */}
       <section className="py-24 bg-cream">
         <Container>
-          <div className="flex items-end justify-between mb-12">
-            <SectionHeading
-              overline="From the team"
-              title="From our insights"
-              italicWord="insights"
-            />
-            <Link
-              href="/insights"
-              className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-ink/60 hover:text-ink transition-colors"
-            >
-              All articles <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+          <Reveal>
+            <div className="flex items-end justify-between mb-12">
+              <SectionHeading
+                overline="From the team"
+                title="From our insights"
+                italicWord="insights"
+              />
+              <Link
+                href="/insights"
+                className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-ink/60 hover:text-ink transition-colors"
+              >
+                All articles <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </Reveal>
 
           <div className="grid gap-8 md:grid-cols-3">
-            {posts.map((post) => (
+            {posts.map((post, i) => (
+              <Reveal key={post.id} delay={(i % 3) * 0.08} className="h-full">
               <Link
-                key={post.id}
                 href={`/insights/${post.slug}`}
-                className="group block rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+                className="group block h-full rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <Image
@@ -257,16 +279,23 @@ export default function HomePage() {
                   </p>
                 </div>
               </Link>
+              </Reveal>
             ))}
           </div>
         </Container>
       </section>
 
+      {/* ── 7b. TESTIMONIALS ──────────────────────────────────────────── */}
+      <Testimonials />
+
       {/* ── 8. CTA ────────────────────────────────────────────────────── */}
-      <section className="py-24 bg-white border-t border-black/5">
+      <section className="py-28 bg-white border-t border-black/5">
         <Container className="text-center">
+          <Reveal>
+          <p className="text-xs uppercase tracking-[0.2em] text-gold-deep mb-4">Get started</p>
           <SectionHeading
             title="Ready to find your place?"
+            italicWord="place"
             className="mx-auto max-w-2xl [&_h2]:text-center"
           />
           <p className="mt-5 text-ink/60 max-w-lg mx-auto">
@@ -292,6 +321,7 @@ export default function HomePage() {
               Contact us
             </Link>
           </div>
+          </Reveal>
         </Container>
       </section>
     </>
