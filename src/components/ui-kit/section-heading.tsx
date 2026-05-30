@@ -27,7 +27,7 @@ export function SectionHeading({ overline, title, italicWord, className }: Secti
   return (
     <div className={cn('', className)}>
       {overline && (
-        <p className="text-xs uppercase tracking-[0.2em] text-ink/50 mb-3">{overline}</p>
+        <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-gold">{overline}</p>
       )}
       <h2 className="font-display text-4xl font-semibold leading-tight md:text-5xl text-ink">
         {renderTitle()}

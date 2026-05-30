@@ -4,18 +4,20 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Brand palette — literal hex values, no var() references needed */
+/* Brand palette — "Warm Sand & Espresso" — literal hex values, no var() references needed */
 @theme {
-  --color-ink: #15202B;
-  --color-sky: #AEBFD1;
-  --color-cream: #F6F4EF;
-  --color-gold: #C89B3C;
+  --color-ink: #2B2118;          /* espresso — primary dark text & dark sections */
+  --color-sky: #E7DCC9;          /* warm beige secondary (re-purposed from light blue) */
+  --color-cream: #F4EFE7;        /* sand — main page background */
+  --color-gold: #B0875B;         /* clay-gold accent */
 
-  /* Refinements (new tokens — existing utilities untouched) */
-  --color-cream-warm: #F8F5EF;   /* a touch warmer for surfaces */
-  --color-gold-deep: #B8862F;    /* richer gold for hovers / accents */
-  --color-charcoal: #0F171E;     /* deep section background */
-  --color-ink-soft: #233140;     /* softened ink for secondary text */
+  /* Refinements */
+  --color-cream-warm: #FBF8F3;   /* lighter surface / cards */
+  --color-gold-deep: #96703F;    /* richer clay-gold for hovers / accents */
+  --color-charcoal: #211910;     /* deepest brown for richest sections */
+  --color-ink-soft: #3A2D1F;     /* softened espresso for secondary text */
+  --color-sand-muted: #7A6A57;   /* muted warm text */
+  --color-surface: #FBF8F3;      /* card / floating surface */
 
   --default-transition-duration: 200ms;
   --default-transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
