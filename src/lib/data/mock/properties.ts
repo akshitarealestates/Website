@@ -54,15 +54,32 @@ export const properties: Property[] = [
     createdAt: '2026-01-10T08:00:00.000Z',
     project: {
       developerName: 'Prestige Constructions Pvt Ltd',
+      launchStatus: 'Under Construction',
       possessionDate: '2027-12-31',
-      configurations: [
-        { type: '3 BHK', sizeSqft: 1750, price: 18500000 },
-        { type: '4 BHK', sizeSqft: 2300, price: 24500000 },
-        { type: 'Penthouse', sizeSqft: 3800, price: 42000000 },
-      ],
-      brochureUrl: '/brochures/prestige-golf-residences.pdf',
+      reraId: 'UPRERAPRJ112847',
       totalUnits: 320,
       projectStatus: 'Under Construction',
+      about:
+        'Prestige Golf Residences is a landmark gated development wrapped around the 18-hole Sushant Golf City course. Three signature towers rise over manicured fairways, offering residences finished in imported marble with smart-home automation pre-wired throughout. Residents enjoy a private clubhouse, a rooftop infinity pool, and direct golf-course access.',
+      configurations: [
+        { type: '3 BHK', sizeSqft: 1750, sizeLabel: '1,680–1,820 sq ft', price: 18500000, priceTo: 21000000, availability: 'few_left' },
+        { type: '3 BHK + Study', sizeSqft: 2000, sizeLabel: '1,950–2,080 sq ft', price: 21500000, priceTo: 23800000, availability: 'available' },
+        { type: '4 BHK', sizeSqft: 2300, sizeLabel: '2,260–2,400 sq ft', price: 24500000, priceTo: 27500000, availability: 'available' },
+        { type: 'Penthouse', sizeSqft: 3800, sizeLabel: '3,800 sq ft', price: 42000000, priceTo: 48000000, availability: 'sold_out' },
+      ],
+      brochureUrl: '/brochures/prestige-golf-residences.pdf',
+      gallery: [
+        imageFor('prestige-golf-gallery', 0),
+        imageFor('prestige-golf-gallery', 1),
+        imageFor('prestige-golf-gallery', 2),
+        imageFor('prestige-golf-gallery', 3),
+      ],
+      locationHighlights: [
+        '18-hole golf course at your doorstep',
+        '12 min to Shaheed Path expressway',
+        'International schools within 3 km',
+        'Medanta Hospital under 15 min',
+      ],
       amenitiesExtended: [
         'Rooftop Infinity Pool',
         'Multipurpose Hall',
@@ -115,14 +132,30 @@ export const properties: Property[] = [
     createdAt: '2026-01-18T10:00:00.000Z',
     project: {
       developerName: 'Elysian Realty Group',
+      launchStatus: 'New Launch',
       possessionDate: '2028-03-31',
-      configurations: [
-        { type: '3 BHK', sizeSqft: 1900, price: 19500000 },
-        { type: '4 BHK', sizeSqft: 2100, price: 22000000 },
-        { type: '5 BHK Sky Villa', sizeSqft: 3200, price: 36000000 },
-      ],
+      reraId: 'UPRERAPRJ224531',
       totalUnits: 168,
       projectStatus: 'Under Construction',
+      about:
+        'Elysian Heights is a freshly launched ultra-luxury address on the Vibhuti Khand IT corridor, with only four sky-villa-style apartments per floor. Each home commands 270° city views and comes with a private servant quarter, dedicated lift lobby, and three covered car parks. A 28th-floor sky lounge crowns the tower.',
+      configurations: [
+        { type: '3 BHK', sizeSqft: 1900, sizeLabel: '1,880–1,960 sq ft', price: 19500000, priceTo: 21000000, availability: 'available' },
+        { type: '4 BHK', sizeSqft: 2100, sizeLabel: '2,100–2,260 sq ft', price: 22000000, priceTo: 25500000, availability: 'few_left' },
+        { type: '5 BHK Sky Villa', sizeSqft: 3200, sizeLabel: '3,200 sq ft', price: 36000000, priceTo: 41000000, availability: 'few_left' },
+      ],
+      gallery: [
+        imageFor('elysian-heights-gallery', 0),
+        imageFor('elysian-heights-gallery', 1),
+        imageFor('elysian-heights-gallery', 2),
+        imageFor('elysian-heights-gallery', 3),
+      ],
+      locationHighlights: [
+        'Heart of Vibhuti Khand IT corridor',
+        'Walk to Phoenix Palassio mall',
+        '10 min to Gomti Nagar metro',
+        'Surrounded by premium dining',
+      ],
       amenitiesExtended: [
         'Sky Lounge on 28th Floor',
         'Temperature-controlled Pool',
@@ -175,13 +208,30 @@ export const properties: Property[] = [
     createdAt: '2026-02-01T09:30:00.000Z',
     project: {
       developerName: 'Lotus Infratech Pvt Ltd',
+      launchStatus: 'Under Construction',
       possessionDate: '2027-06-30',
-      configurations: [
-        { type: '2 BHK', sizeSqft: 1150, price: 10500000 },
-        { type: '3 BHK', sizeSqft: 1600, price: 15500000 },
-      ],
+      reraId: 'UPRERAPRJ334892',
       totalUnits: 240,
       projectStatus: 'Under Construction',
+      about:
+        'Lotus Boulevard is a thoughtfully planned residential community built for Lucknow’s IT professionals, a short walk from the Infosys and TCS campuses. Homes feature modular kitchens, vitrified flooring, and pre-installed high-speed internet. On-site co-working and conference facilities make hybrid work effortless.',
+      configurations: [
+        { type: '2 BHK', sizeSqft: 1150, sizeLabel: '1,120–1,180 sq ft', price: 10500000, priceTo: 11800000, availability: 'available' },
+        { type: '3 BHK', sizeSqft: 1600, sizeLabel: '1,560–1,680 sq ft', price: 15500000, priceTo: 17200000, availability: 'few_left' },
+        { type: '3 BHK + Study', sizeSqft: 1820, sizeLabel: '1,820 sq ft', price: 17800000, priceTo: 19000000, availability: 'available' },
+      ],
+      gallery: [
+        imageFor('lotus-boulevard-gallery', 0),
+        imageFor('lotus-boulevard-gallery', 1),
+        imageFor('lotus-boulevard-gallery', 2),
+        imageFor('lotus-boulevard-gallery', 3),
+      ],
+      locationHighlights: [
+        '5 min walk to Infosys & TCS campuses',
+        'Vibhuti Khand IT hub address',
+        'Close to Lulu Mall and dining',
+        'Excellent metro and road connectivity',
+      ],
       amenitiesExtended: [
         'Co-Working Space',
         'Conference Room',
@@ -232,13 +282,29 @@ export const properties: Property[] = [
     createdAt: '2026-01-25T11:00:00.000Z',
     project: {
       developerName: 'Horizon Luxury Homes',
+      launchStatus: 'Under Construction',
       possessionDate: '2027-09-30',
-      configurations: [
-        { type: '4 BHK Villa', sizeSqft: 4200, price: 44000000 },
-        { type: '5 BHK Villa', sizeSqft: 4800, price: 52000000 },
-      ],
+      reraId: 'UPRERAPRJ445123',
       totalUnits: 12,
       projectStatus: 'Under Construction',
+      about:
+        'Riverfront Villas is an ultra-exclusive enclave of just twelve independent villas on the banks of the Gomti. Each three-storey home is Vastu-compliant, north-east facing, and crowned by a private rooftop pool. KNX home automation, an in-villa theatre, and underground wine storage define a new benchmark for Lucknow luxury.',
+      configurations: [
+        { type: '4 BHK Villa', sizeSqft: 4200, sizeLabel: '4,200 sq ft', price: 44000000, priceTo: 47000000, availability: 'few_left' },
+        { type: '5 BHK Villa', sizeSqft: 4800, sizeLabel: '4,800 sq ft', price: 52000000, priceTo: 56000000, availability: 'few_left' },
+      ],
+      gallery: [
+        imageFor('riverfront-villas-gallery', 0),
+        imageFor('riverfront-villas-gallery', 1),
+        imageFor('riverfront-villas-gallery', 2),
+        imageFor('riverfront-villas-gallery', 3),
+      ],
+      locationHighlights: [
+        'Direct Gomti riverside frontage',
+        'Vastu-compliant north-east orientation',
+        'Gated enclave of only 12 villas',
+        'Minutes from Gomti Nagar core',
+      ],
       amenitiesExtended: [
         'Private Rooftop Pool',
         'Landscaped Garden',
@@ -290,19 +356,36 @@ export const properties: Property[] = [
     createdAt: '2026-02-15T08:30:00.000Z',
     project: {
       developerName: 'Sunrise Developers UP',
+      launchStatus: 'Ready to Move',
       possessionDate: '2026-12-31',
-      configurations: [
-        { type: '2 BHK', sizeSqft: 980, price: 9800000 },
-        { type: '3 BHK', sizeSqft: 1380, price: 13500000 },
-      ],
+      reraId: 'UPRERAPRJ556784',
       totalUnits: 180,
       projectStatus: 'Ready to Move',
+      about:
+        'Sunrise Township is a ready-to-move mid-segment community in established Indira Nagar, built for first-time buyers who want a premium locality without the premium price. Spacious 2 and 3 BHK homes carry modern finishes, and the project runs on solar-powered common areas with rainwater harvesting throughout.',
+      configurations: [
+        { type: '2 BHK', sizeSqft: 980, sizeLabel: '940–1,020 sq ft', price: 9800000, priceTo: 10600000, availability: 'available' },
+        { type: '3 BHK', sizeSqft: 1380, sizeLabel: '1,340–1,420 sq ft', price: 13500000, priceTo: 14800000, availability: 'few_left' },
+      ],
+      gallery: [
+        imageFor('sunrise-township-gallery', 0),
+        imageFor('sunrise-township-gallery', 1),
+        imageFor('sunrise-township-gallery', 2),
+        imageFor('sunrise-township-gallery', 3),
+      ],
+      locationHighlights: [
+        'Metro station within 800 m',
+        'La Martiniere & CMS schools nearby',
+        'Established Indira Nagar locality',
+        'Ready-to-move units available now',
+      ],
       amenitiesExtended: [
         'Solar-powered common areas',
         'Rainwater Harvesting',
         'Landscaped Central Park',
         'Multipurpose Hall',
         'Senior Citizens Corner',
+        'Children’s Play Area',
       ],
     },
   },
@@ -346,19 +429,36 @@ export const properties: Property[] = [
     createdAt: '2026-03-01T10:00:00.000Z',
     project: {
       developerName: 'Northmark Builders',
+      launchStatus: 'Under Construction',
       possessionDate: '2027-03-31',
-      configurations: [
-        { type: '3 BHK', sizeSqft: 1350, price: 12500000 },
-        { type: '3 BHK + Study', sizeSqft: 1550, price: 14500000 },
-      ],
+      reraId: 'UPRERAPRJ667342',
       totalUnits: 96,
       projectStatus: 'Under Construction',
+      about:
+        'Aliganj Grand Residency brings boutique premium living to north Lucknow with just 96 spacious homes across a single gated tower. Wide balconies frame the north-Lucknow skyline, and the address sits a kilometre from Sahara Hospital with easy access to Lucknow University.',
+      configurations: [
+        { type: '3 BHK', sizeSqft: 1350, sizeLabel: '1,320–1,380 sq ft', price: 12500000, priceTo: 13600000, availability: 'available' },
+        { type: '3 BHK + Study', sizeSqft: 1550, sizeLabel: '1,550 sq ft', price: 14500000, priceTo: 15400000, availability: 'few_left' },
+      ],
+      gallery: [
+        imageFor('aliganj-grand-gallery', 0),
+        imageFor('aliganj-grand-gallery', 1),
+        imageFor('aliganj-grand-gallery', 2),
+        imageFor('aliganj-grand-gallery', 3),
+      ],
+      locationHighlights: [
+        '1 km from Sahara Hospital',
+        'Close to Lucknow University',
+        'Gated community with boom barrier',
+        'North-Lucknow skyline views',
+      ],
       amenitiesExtended: [
         'Rooftop Jogging Track',
         'Yoga Lawn',
         'Children\'s Splash Pool',
         'Indoor Games Room',
         'Festival Lawn',
+        'Gymnasium',
       ],
     },
   },
@@ -402,20 +502,37 @@ export const properties: Property[] = [
     createdAt: '2026-03-20T09:00:00.000Z',
     project: {
       developerName: 'Green Valley Developers',
+      launchStatus: 'Under Construction',
       possessionDate: '2026-12-31',
-      configurations: [
-        { type: '2 BHK', sizeSqft: 850, price: 7200000 },
-        { type: '2 BHK + Servant', sizeSqft: 1000, price: 8500000 },
-        { type: '3 BHK', sizeSqft: 1250, price: 10800000 },
-      ],
+      reraId: 'UPRERAPRJ778901',
       totalUnits: 144,
       projectStatus: 'Under Construction',
+      about:
+        'Jankipuram Orchid Homes delivers honest, quality construction at an entry-level price point in fast-growing north Lucknow. With possession scheduled for December 2026 and SGPGI just over a kilometre away, it is a natural fit for medical professionals and government employees seeking Vastu-compliant east-facing homes.',
+      configurations: [
+        { type: '2 BHK', sizeSqft: 850, sizeLabel: '820–880 sq ft', price: 7200000, priceTo: 7900000, availability: 'available' },
+        { type: '2 BHK + Servant', sizeSqft: 1000, sizeLabel: '1,000 sq ft', price: 8500000, priceTo: 9200000, availability: 'few_left' },
+        { type: '3 BHK', sizeSqft: 1250, sizeLabel: '1,210–1,290 sq ft', price: 10800000, priceTo: 11900000, availability: 'available' },
+      ],
+      gallery: [
+        imageFor('jankipuram-orchid-gallery', 0),
+        imageFor('jankipuram-orchid-gallery', 1),
+        imageFor('jankipuram-orchid-gallery', 2),
+        imageFor('jankipuram-orchid-gallery', 3),
+      ],
+      locationHighlights: [
+        '1.2 km from SGPGI hospital campus',
+        'Vastu-compliant east-facing flats',
+        'Fast-growing Jankipuram Extension',
+        'Possession by December 2026',
+      ],
       amenitiesExtended: [
         'Community Hall',
         'Terrace Garden',
         'CCTV Surveillance',
         'Water Softener Plant',
         'Bicycle Parking',
+        'Landscaped Park',
       ],
     },
   },
@@ -459,19 +576,36 @@ export const properties: Property[] = [
     createdAt: '2026-04-01T08:00:00.000Z',
     project: {
       developerName: 'Mahanagar Infratech',
+      launchStatus: 'Under Construction',
       possessionDate: '2027-06-30',
-      configurations: [
-        { type: '3 BHK', sizeSqft: 1280, price: 11200000 },
-        { type: '3 BHK Premium', sizeSqft: 1480, price: 13200000 },
-      ],
+      reraId: 'UPRERAPRJ889452',
       totalUnits: 112,
       projectStatus: 'Under Construction',
+      about:
+        'Mahanagar Central Park Residences overlook one of central Lucknow’s most loved green spaces, pairing park-facing homes with semi-furnished interiors and granite-counter modular kitchens. A genuinely central address puts Hazratganj fifteen minutes away while keeping every daily amenity within reach.',
+      configurations: [
+        { type: '3 BHK', sizeSqft: 1280, sizeLabel: '1,240–1,320 sq ft', price: 11200000, priceTo: 12300000, availability: 'available' },
+        { type: '3 BHK Premium', sizeSqft: 1480, sizeLabel: '1,480 sq ft', price: 13200000, priceTo: 14400000, availability: 'few_left' },
+      ],
+      gallery: [
+        imageFor('mahanagar-central-gallery', 0),
+        imageFor('mahanagar-central-gallery', 1),
+        imageFor('mahanagar-central-gallery', 2),
+        imageFor('mahanagar-central-gallery', 3),
+      ],
+      locationHighlights: [
+        'Overlooks Mahanagar Central Park',
+        '15 min to Hazratganj',
+        'Central Lucknow address',
+        'Covered parking for every home',
+      ],
       amenitiesExtended: [
         'Party Lawn',
         'Amphitheatre',
         'Rooftop Solar Panels',
         'EV Charging Points',
         'Organic Kitchen Garden',
+        'Swimming Pool',
       ],
     },
   },

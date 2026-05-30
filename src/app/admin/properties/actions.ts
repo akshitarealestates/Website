@@ -13,6 +13,7 @@ import type {
   PropertyStatus,
   ListingType,
   ProjectDetails,
+  ConfigurationAvailability,
 } from '@/lib/data/types';
 
 export interface FormState {
@@ -69,11 +70,16 @@ function parseImages(fd: FormData, title: string) {
     .map((url) => ({ url, alt: title }));
 }
 
+const AVAILABILITIES: ConfigurationAvailability[] = ['available', 'few_left', 'sold_out'];
+
 /** Parse parallel config row arrays into configurations[]. */
 function parseConfigurations(fd: FormData): ProjectDetails['configurations'] {
   const types = fd.getAll('configType').filter((v): v is string => typeof v === 'string');
   const sizes = fd.getAll('configSize').filter((v): v is string => typeof v === 'string');
   const prices = fd.getAll('configPrice').filter((v): v is string => typeof v === 'string');
+  const pricesTo = fd.getAll('configPriceTo').filter((v): v is string => typeof v === 'string');
+  const sizeLabels = fd.getAll('configSizeLabel').filter((v): v is string => typeof v === 'string');
+  const avails = fd.getAll('configAvailability').filter((v): v is string => typeof v === 'string');
 
   const rows: ProjectDetails['configurations'] = [];
   for (let i = 0; i < types.length; i++) {
@@ -81,10 +87,21 @@ function parseConfigurations(fd: FormData): ProjectDetails['configurations'] {
     const sizeSqft = Number(sizes[i] ?? '');
     const price = Number(prices[i] ?? '');
     if (!type && !Number.isFinite(sizeSqft) && !Number.isFinite(price)) continue;
+
+    const priceToNum = Number(pricesTo[i] ?? '');
+    const sizeLabel = (sizeLabels[i] ?? '').trim();
+    const availRaw = (avails[i] ?? '').trim();
+    const availability = AVAILABILITIES.includes(availRaw as ConfigurationAvailability)
+      ? (availRaw as ConfigurationAvailability)
+      : undefined;
+
     rows.push({
       type,
       sizeSqft: Number.isFinite(sizeSqft) ? sizeSqft : 0,
       price: Number.isFinite(price) ? price : 0,
+      ...(Number.isFinite(priceToNum) && priceToNum > 0 ? { priceTo: priceToNum } : {}),
+      ...(sizeLabel ? { sizeLabel } : {}),
+      ...(availability ? { availability } : {}),
     });
   }
   return rows;
@@ -129,14 +146,23 @@ function buildPropertyInput(fd: FormData): {
   let project: ProjectDetails | null = null;
   if (isPremium) {
     const developerName = str(fd, 'developerName');
-    if (developerName || str(fd, 'possessionDate') || fd.getAll('configType').length > 0) {
+    const hasConfigs = fd.getAll('configType').some((v) => typeof v === 'string' && v.trim());
+    if (developerName || str(fd, 'possessionDate') || str(fd, 'about') || hasConfigs) {
+      const gallery = lineList(fd, 'gallery');
+      const amenitiesExtended = lineList(fd, 'amenitiesExtended');
+      const locationHighlights = lineList(fd, 'locationHighlights');
       project = {
         developerName: developerName ?? '',
         possessionDate: str(fd, 'possessionDate') ?? '',
         projectStatus: str(fd, 'projectStatus'),
+        launchStatus: str(fd, 'launchStatus'),
+        reraId: str(fd, 'projectReraId'),
+        about: str(fd, 'about'),
         totalUnits: num(fd, 'totalUnits') ?? undefined,
         configurations: parseConfigurations(fd),
-        amenitiesExtended: [],
+        amenitiesExtended,
+        ...(locationHighlights.length > 0 ? { locationHighlights } : {}),
+        ...(gallery.length > 0 ? { gallery } : {}),
       };
     }
   }

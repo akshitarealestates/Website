@@ -4,14 +4,37 @@ export type PropertyStatus = 'draft' | 'pending' | 'published' | 'sold' | 'rejec
 
 export interface PropertyImage { url: string; alt: string }
 
+export type ConfigurationAvailability = 'available' | 'few_left' | 'sold_out';
+
+export interface ProjectConfiguration {
+  type: string;
+  sizeSqft: number;
+  /** Starting ("from") price for this configuration. */
+  price: number;
+  /** Upper bound of the price range, when configurations span a band. */
+  priceTo?: number;
+  availability?: ConfigurationAvailability;
+  /** Human-friendly size range, e.g. "1,180–1,340 sq ft". */
+  sizeLabel?: string;
+}
+
 export interface ProjectDetails {
   developerName: string;
   possessionDate: string;
-  configurations: { type: string; sizeSqft: number; price: number }[];
+  configurations: ProjectConfiguration[];
   brochureUrl?: string;
   totalUnits?: number;
   projectStatus?: string;
   amenitiesExtended: string[];
+  reraId?: string;
+  /** e.g. "New Launch" / "Under Construction" / "Ready to Move". */
+  launchStatus?: string;
+  /** Additional gallery image URLs. */
+  gallery?: string[];
+  masterPlanUrl?: string;
+  /** Longer overview prose. */
+  about?: string;
+  locationHighlights?: string[];
 }
 
 export interface Property {

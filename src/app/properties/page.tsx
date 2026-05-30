@@ -4,7 +4,7 @@ import { Search } from 'lucide-react';
 import { listProperties, listLocalities } from '@/lib/data/repo';
 import { Container } from '@/components/ui-kit/container';
 import { SectionHeading } from '@/components/ui-kit/section-heading';
-import { PropertyCard } from '@/components/property/property-card';
+import { ListingCard } from '@/components/property/listing-card';
 import { FilterBar } from '@/components/property/filter-bar';
 import { SmartSearch } from '@/components/ai/smart-search';
 import type { PropertyFilters, PropertyCategory, ListingType } from '@/lib/data/types';
@@ -188,7 +188,7 @@ export default async function PropertiesPage({
         {count > 0 ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {properties.map((property) => (
-              <PropertyCard key={property.id} property={property} />
+              <ListingCard key={property.id} property={property} />
             ))}
           </div>
         ) : (

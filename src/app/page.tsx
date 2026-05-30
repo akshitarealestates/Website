@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { listFeatured, listLocalities, listBlogPosts } from '@/lib/data/repo';
 import { Container } from '@/components/ui-kit/container';
 import { SectionHeading } from '@/components/ui-kit/section-heading';
-import { PropertyCard } from '@/components/property/property-card';
+import { ListingCard } from '@/components/property/listing-card';
 import { IconButton } from '@/components/ui-kit/icon-button';
 import { Hero } from '@/components/home/hero';
 import { TrustBand } from '@/components/home/trust-band';
@@ -127,7 +127,7 @@ export default function HomePage() {
                   delay={(i % 3) * 0.08}
                   className={i === 0 ? 'sm:col-span-2 lg:col-span-1' : ''}
                 >
-                  <PropertyCard property={property} />
+                  <ListingCard property={property} />
                 </Reveal>
               ))}
             </div>

@@ -1,12 +1,29 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useActionState, useEffect, useState } from 'react';
 import { submitEnquiry, type EnquiryFormState } from '@/app/properties/[slug]/actions';
 
 const initialState: EnquiryFormState = { success: false };
 
-export function EnquiryForm({ slug, title }: { slug: string; title: string }) {
+export function EnquiryForm({
+  slug,
+  title,
+  message,
+}: {
+  slug: string;
+  title: string;
+  /** Controlled message value, used to prefill from a chosen configuration. */
+  message?: string;
+}) {
   const [state, formAction, isPending] = useActionState(submitEnquiry, initialState);
+  const defaultMessage = `I'm interested in ${title}. Please share more details.`;
+  const [messageValue, setMessageValue] = useState(message ?? defaultMessage);
+
+  // When a parent supplies a new prefilled message (e.g. a chosen
+  // configuration), sync it into the editable field.
+  useEffect(() => {
+    if (message !== undefined) setMessageValue(message);
+  }, [message]);
 
   if (state.success) {
     return (
@@ -79,7 +96,8 @@ export function EnquiryForm({ slug, title }: { slug: string; title: string }) {
           id="enq-message"
           name="message"
           rows={3}
-          defaultValue={`I'm interested in ${title}. Please share more details.`}
+          value={messageValue}
+          onChange={(e) => setMessageValue(e.target.value)}
           className="w-full rounded-xl border border-black/10 bg-white px-4 py-2.5 text-sm text-ink placeholder:text-ink/30 outline-none focus:border-ink/40 focus:ring-2 focus:ring-ink/5 transition-all resize-none"
         />
       </div>

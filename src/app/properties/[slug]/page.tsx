@@ -20,6 +20,7 @@ import {
 import { Container } from '@/components/ui-kit/container';
 import { SectionHeading } from '@/components/ui-kit/section-heading';
 import { PropertyCard } from '@/components/property/property-card';
+import { ProjectDevelopment } from '@/components/property/project-development';
 import { Gallery } from '@/components/property/gallery';
 import { EmiCalculator } from '@/components/property/emi-calculator';
 import { EnquiryForm } from '@/components/property/enquiry-form';
@@ -95,6 +96,11 @@ export default async function PropertyDetailPage({
 
   if (!property || (property.status !== 'published' && property.status !== 'pending')) {
     notFound();
+  }
+
+  // Premium projects render the development-oriented detail view.
+  if (property.category === 'premium_project' && property.project) {
+    return <ProjectDevelopment property={property} />;
   }
 
   const isRent = property.listingType === 'rent';

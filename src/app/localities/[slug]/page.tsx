@@ -9,7 +9,7 @@ import Image from 'next/image';
 import { MapPin, TrendingUp } from 'lucide-react';
 import { Container } from '@/components/ui-kit/container';
 import { SectionHeading } from '@/components/ui-kit/section-heading';
-import { PropertyCard } from '@/components/property/property-card';
+import { ListingCard } from '@/components/property/listing-card';
 import { imageFor } from '@/lib/data/images';
 
 export function generateStaticParams() {
@@ -126,7 +126,7 @@ export default async function LocalityPage({
           {properties.length > 0 ? (
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {properties.map((p) => (
-                <PropertyCard key={p.slug} property={p} />
+                <ListingCard key={p.slug} property={p} />
               ))}
             </div>
           ) : (
