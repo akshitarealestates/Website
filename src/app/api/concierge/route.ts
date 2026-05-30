@@ -1,12 +1,15 @@
 import { NextResponse } from 'next/server';
+import { generateText } from 'ai';
 import { respond } from '@/lib/ai/concierge';
 import { listLocalities, listProperties, createLead } from '@/lib/data/repo';
+import { aiEnabled, aiModel } from '@/lib/ai/provider';
 
-// AI-UPGRADE: stream the assistant reply with the Vercel AI SDK (streamText + tools:
-// searchListings, getLocalityInfo, createLead) and return a UI message stream so the
-// widget can render tokens as they arrive. Route through the Vercel AI Gateway.
-// See: https://sdk.vercel.ai/docs
+// AI-UPGRADE: WIRED. Intent + filters + lead capture stay rule-based (respond()).
+// For conversational (non-search) turns we additionally generate a warmer reply via
+// OpenRouter (Vercel AI SDK generateText), falling back to the rule-based reply on any
+// error. A future pass can stream tokens with streamText. See src/lib/ai/provider.ts.
 
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 interface ConciergeRequest {
@@ -61,6 +64,26 @@ export async function POST(req: Request) {
         image: p.images[0]?.url ?? '',
         bhk: p.bhk ?? null,
       }));
+  }
+
+  // For conversational (non-search) turns, generate a warmer reply with the LLM.
+  // Search turns keep the concise rule-based reply since the listings carry the value.
+  if (aiEnabled && !result.filters && !(name && phone)) {
+    try {
+      const { text } = await generateText({
+        model: aiModel,
+        system:
+          "You are Akshita Realty's concierge for Lucknow real estate. " +
+          'Be concise, warm, and helpful. Two or three sentences at most. ' +
+          'You can help search listings, estimate valuations/EMI, share locality insight, ' +
+          'and arrange site visits. Do not invent specific prices or listings.',
+        prompt: message,
+      });
+      const warm = text.trim();
+      if (warm) reply = warm;
+    } catch {
+      // Keep the rule-based reply on any LLM error.
+    }
   }
 
   // Capture the lead whenever the visitor has supplied contact details. The widget

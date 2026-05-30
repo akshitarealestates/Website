@@ -4,11 +4,12 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Search, Sparkles } from 'lucide-react';
 import { parseSearch } from '@/lib/ai/parse-search';
+import type { PropertyFilters } from '@/lib/data/types';
 
-// AI-UPGRADE: replace parseSearch with a generateObject() call (Vercel AI SDK)
-// that returns PropertyFilters from the NL query — use generateText + Output.object
-// routed through the Vercel AI Gateway for auth, failover and cost tracking.
-// See: https://sdk.vercel.ai/docs and https://vercel.com/docs/ai-gateway
+// AI-UPGRADE: WIRED. On submit this POSTs the query to /api/ai/parse-search, which
+// runs an OpenRouter LLM (Vercel AI SDK generateObject) to produce PropertyFilters,
+// with a rule-based fallback server-side. If the network call itself fails, we fall
+// back to the local parseSearch below. See src/lib/ai/search-llm.ts.
 
 interface SmartSearchProps {
   localities: { name: string; slug: string }[];
@@ -24,12 +25,27 @@ const EXAMPLE_CHIPS = [
 export function SmartSearch({ localities }: SmartSearchProps) {
   const router = useRouter();
   const [value, setValue] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  function handleSearch() {
+  async function handleSearch() {
     const q = value.trim();
-    if (!q) return;
+    if (!q || loading) return;
 
-    const filters = parseSearch(q, localities);
+    setLoading(true);
+    let filters: PropertyFilters;
+    try {
+      const res = await fetch('/api/ai/parse-search', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ query: q }),
+      });
+      if (!res.ok) throw new Error('parse-search failed');
+      const data = (await res.json()) as { filters: PropertyFilters };
+      filters = data.filters;
+    } catch {
+      // Network/route failure → fall back to local rule-based parsing.
+      filters = parseSearch(q, localities);
+    }
 
     const params = new URLSearchParams();
     if (filters.bhk !== undefined) params.set('bhk', String(filters.bhk));
@@ -63,13 +79,14 @@ export function SmartSearch({ localities }: SmartSearchProps) {
         />
         <button
           onClick={handleSearch}
-          disabled={!value.trim()}
+          disabled={!value.trim() || loading}
+          aria-busy={loading}
           className="shrink-0 rounded-xl bg-gold text-ink text-sm font-medium px-4 py-1.5 hover:bg-gold/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           aria-label="Search with natural language"
         >
           <span className="flex items-center gap-1.5">
             <Search className="h-3.5 w-3.5" aria-hidden="true" />
-            Search
+            {loading ? 'Searching…' : 'Search'}
           </span>
         </button>
       </div>

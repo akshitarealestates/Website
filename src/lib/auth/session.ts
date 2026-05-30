@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+import { isAdminEmail } from './admin';
 import type { Role } from './roles';
 
 export interface SessionUser { id: string; email: string; fullName: string; role: Role; isDemo: boolean }
@@ -12,13 +13,28 @@ export async function getCurrentUser(): Promise<SessionUser | null> {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return null;
-    const { data: profile } = await supabase.from('profiles').select('role, full_name').eq('id', user.id).single();
-    return {
-      id: user.id,
-      email: user.email ?? '',
-      fullName: profile?.full_name ?? user.email ?? 'User',
-      role: (profile?.role as Role) ?? 'buyer',
-      isDemo: false,
-    };
+
+    const admin = isAdminEmail(user.email);
+    let fullName = user.email ?? 'User';
+    let role: Role = admin ? 'admin' : 'buyer';
+
+    // The `profiles` table may not exist yet on the linked DB. Never throw:
+    // the allowlist already governs admin access, profiles only enriches it.
+    try {
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('role, full_name')
+        .eq('id', user.id)
+        .single();
+      if (profile) {
+        if (profile.full_name) fullName = profile.full_name;
+        // Allowlist admins stay admin; otherwise adopt the stored role.
+        if (!admin && profile.role) role = profile.role as Role;
+      }
+    } catch {
+      // ignore — profiles table missing or unreachable
+    }
+
+    return { id: user.id, email: user.email ?? '', fullName, role, isDemo: false };
   } catch { return null; }
 }

@@ -1,8 +1,9 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { updateSession } from '@/lib/supabase/middleware';
+import { isAdminEmail } from '@/lib/auth/admin';
 
 export async function proxy(request: NextRequest) {
-  const { response, user, supabase } = await updateSession(request);
+  const { response, user } = await updateSession(request);
   const { pathname } = request.nextUrl;
 
   // Demo mode: keep cookie handling but skip all auth/role gating.
@@ -10,22 +11,33 @@ export async function proxy(request: NextRequest) {
     return response;
   }
 
-  const needsAuth = pathname.startsWith('/dashboard') || pathname.startsWith('/admin') || pathname.startsWith('/sell');
-  if (needsAuth && !user) {
-    const url = request.nextUrl.clone();
-    url.pathname = '/login';
-    url.searchParams.set('next', pathname);
-    return NextResponse.redirect(url);
-  }
-
-  if (pathname.startsWith('/admin') && user && supabase) {
-    const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
-    if (profile?.role !== 'admin') {
+  // /admin: require a logged-in user on the email allowlist.
+  if (pathname.startsWith('/admin')) {
+    if (!user) {
+      const url = request.nextUrl.clone();
+      url.pathname = '/login';
+      url.searchParams.set('next', '/admin');
+      return NextResponse.redirect(url);
+    }
+    if (!isAdminEmail(user.email)) {
       const url = request.nextUrl.clone();
       url.pathname = '/';
+      url.search = '';
+      return NextResponse.redirect(url);
+    }
+    return response;
+  }
+
+  // /dashboard and /sell: any logged-in user.
+  if (pathname.startsWith('/dashboard') || pathname.startsWith('/sell')) {
+    if (!user) {
+      const url = request.nextUrl.clone();
+      url.pathname = '/login';
+      url.searchParams.set('next', pathname);
       return NextResponse.redirect(url);
     }
   }
+
   return response;
 }
 
