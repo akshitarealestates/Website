@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import Link from 'next/link';
+import { Search } from 'lucide-react';
 import { listProperties, listLocalities } from '@/lib/data/repo';
 import { Container } from '@/components/ui-kit/container';
 import { SectionHeading } from '@/components/ui-kit/section-heading';
@@ -105,23 +106,32 @@ export default async function PropertiesPage({
   const activeTab =
     TABS.find((t) => t.category === filters.category) ?? TABS[0];
 
+  const count = properties.length;
+
   return (
     <div className="min-h-screen bg-cream">
       {/* ── Page header ─────────────────────────────────────────────── */}
-      <div className="bg-ink text-white pt-24 pb-16">
+      <div className="bg-ink pb-16 pt-24 text-white">
         <Container>
-          <SectionHeading
-            overline="Catalog"
-            title={activeTab.fullTitle}
-            italicWord={activeTab.italicWord}
-          />
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeading
+              overline="The collection"
+              title={activeTab.fullTitle}
+              italicWord={activeTab.italicWord}
+              className="[&_h2]:text-white"
+            />
+            <p className="text-sm text-white/55">
+              <span className="font-display text-2xl font-semibold text-gold">{count}</span>{' '}
+              {count === 1 ? 'listing' : 'listings'} available
+            </p>
+          </div>
         </Container>
       </div>
 
       <Container className="py-10">
         {/* ── Smart NL search ─────────────────────────────────────────── */}
-        <div className="mb-8 rounded-2xl bg-ink p-5">
-          <p className="text-xs uppercase tracking-widest text-white/50 mb-3">
+        <div className="mb-8 rounded-3xl border border-black/5 bg-surface p-6 shadow-[0_14px_40px_-26px_rgba(43,33,24,0.4)]">
+          <p className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-gold-deep">
             Describe what you&apos;re looking for
           </p>
           <SmartSearch
@@ -129,34 +139,35 @@ export default async function PropertiesPage({
           />
         </div>
 
-        {/* ── Segment tabs ────────────────────────────────────────────── */}
-        <nav
-          aria-label="Property category tabs"
-          className="flex flex-wrap gap-2 mb-8 border-b border-black/8 pb-4"
-        >
-          {TABS.map((tab) => {
-            const isActive = tab.category === filters.category;
-            return (
-              <Link
-                key={tab.label}
-                href={tabHref(raw, tab.category)}
-                aria-current={isActive ? 'page' : undefined}
-                className={[
-                  'px-4 py-1.5 rounded-full text-sm font-medium transition-colors',
-                  isActive
-                    ? 'bg-ink text-white'
-                    : 'bg-white text-ink/60 hover:text-ink hover:bg-white/80 border border-black/8',
-                ].join(' ')}
-              >
-                {tab.label}
-              </Link>
-            );
-          })}
-        </nav>
+        {/* ── Toolbar: segment tabs + filters ─────────────────────────── */}
+        <div className="mb-8 space-y-5">
+          {/* Segment tabs as a soft segmented control */}
+          <nav
+            aria-label="Property category tabs"
+            className="inline-flex flex-wrap gap-1 rounded-full border border-black/8 bg-surface p-1"
+          >
+            {TABS.map((tab) => {
+              const isActive = tab.category === filters.category;
+              return (
+                <Link
+                  key={tab.label}
+                  href={tabHref(raw, tab.category)}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={[
+                    'rounded-full px-4 py-2 text-sm font-medium transition-colors',
+                    isActive
+                      ? 'bg-ink text-cream shadow-sm'
+                      : 'text-ink-soft hover:bg-ink/5',
+                  ].join(' ')}
+                >
+                  {tab.label}
+                </Link>
+              );
+            })}
+          </nav>
 
-        {/* ── Filter bar (client island) ───────────────────────────── */}
-        <div className="mb-8">
-          <Suspense fallback={<div className="h-12 animate-pulse rounded-xl bg-black/5" />}>
+          {/* Filter bar (client island) */}
+          <Suspense fallback={<div className="h-12 animate-pulse rounded-full bg-black/5" />}>
             <FilterBar
               localities={localities}
               current={{
@@ -167,14 +178,14 @@ export default async function PropertiesPage({
         </div>
 
         {/* ── Result count ────────────────────────────────────────────── */}
-        <p className="text-sm text-ink/50 mb-6">
-          {properties.length === 0
+        <p className="mb-6 text-sm text-sand-muted">
+          {count === 0
             ? 'No properties found'
-            : `${properties.length} ${properties.length === 1 ? 'property' : 'properties'}`}
+            : `Showing ${count} ${count === 1 ? 'property' : 'properties'}`}
         </p>
 
         {/* ── Grid ────────────────────────────────────────────────────── */}
-        {properties.length > 0 ? (
+        {count > 0 ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {properties.map((property) => (
               <PropertyCard key={property.id} property={property} />
@@ -182,16 +193,19 @@ export default async function PropertiesPage({
           </div>
         ) : (
           /* ── Empty state ─────────────────────────────────────────── */
-          <div className="flex flex-col items-center py-24 text-center">
-            <p className="font-display text-2xl font-semibold text-ink mb-3">
-              No properties match your <em className="italic font-normal">filters</em>
+          <div className="mx-auto flex max-w-md flex-col items-center rounded-[2rem] border border-black/5 bg-surface px-8 py-20 text-center shadow-[0_18px_48px_-30px_rgba(43,33,24,0.4)]">
+            <span className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-gold/12 text-gold-deep">
+              <Search className="h-6 w-6" />
+            </span>
+            <p className="mb-3 font-display text-2xl font-semibold text-ink">
+              No properties match your <em className="font-normal italic text-gold-deep">filters</em>
             </p>
-            <p className="text-ink/50 text-sm mb-8 max-w-sm">
+            <p className="mb-8 max-w-sm text-sm text-sand-muted">
               Try broadening your search — remove a filter or explore a different category.
             </p>
             <Link
               href="/properties"
-              className="inline-flex items-center gap-2 rounded-full bg-ink text-white px-6 py-2.5 text-sm font-medium hover:bg-ink/90 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-cream transition-colors hover:bg-ink/90"
             >
               Reset filters
             </Link>
