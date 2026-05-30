@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Phone, Mail, MapPin, Camera, ThumbsUp, Users, Hash, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
+import { InstagramIcon, FacebookIcon, LinkedinIcon, XIcon } from '@/components/icons/social';
 
 const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] = [
   {
@@ -29,10 +30,10 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
 ];
 
 const SOCIALS = [
-  { label: 'Instagram', href: 'https://instagram.com', icon: Camera },
-  { label: 'Facebook', href: 'https://facebook.com', icon: ThumbsUp },
-  { label: 'LinkedIn', href: 'https://linkedin.com', icon: Users },
-  { label: 'X', href: 'https://x.com', icon: Hash },
+  { label: 'Instagram', href: 'https://instagram.com', icon: InstagramIcon },
+  { label: 'Facebook', href: 'https://facebook.com', icon: FacebookIcon },
+  { label: 'LinkedIn', href: 'https://linkedin.com', icon: LinkedinIcon },
+  { label: 'X', href: 'https://x.com', icon: XIcon },
 ];
 
 export function SiteFooter() {
