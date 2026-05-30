@@ -12,7 +12,7 @@ import { AboutCollage } from '@/components/home/about-collage';
 import { Verticals } from '@/components/home/verticals';
 import { PropertyManagement } from '@/components/home/property-management';
 import { Reveal } from '@/components/ui-kit/reveal';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Sparkles, TrendingUp, LineChart, MessageSquare } from 'lucide-react';
 
 const VERTICALS = [
   {
@@ -142,6 +142,114 @@ export default function HomePage() {
             >
               View all properties <ArrowUpRight className="h-4 w-4" />
             </Link>
+          </div>
+        </Container>
+      </section>
+
+
+      {/* ── AI SUITE SHOWCASE ─────────────────────────────────────────── */}
+      <section className="bg-ink text-white py-24 md:py-28 relative overflow-hidden">
+        {/* Glowing background meshes */}
+        <div className="absolute top-0 right-0 h-[500px] w-[500px] rounded-full bg-gold/5 blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 h-[500px] w-[500px] rounded-full bg-gold/5 blur-[100px] pointer-events-none" />
+
+        <Container className="relative z-10">
+          <Reveal>
+            <div className="mb-16 text-center max-w-3xl mx-auto">
+              <p className="text-xs uppercase tracking-[0.25em] text-gold mb-4">Akshita AI Ecosystem</p>
+              <h2 className="font-display text-4xl md:text-5xl font-semibold leading-tight text-white">
+                Smarter decisions driven by <em className="italic font-light text-gold">advanced intelligence</em>
+              </h2>
+              <p className="mt-6 text-white/60 text-sm md:text-base leading-relaxed">
+                We combine local Lucknow real estate mastery with bleeding-edge technology. Experience real estate built for the modern investor.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {/* Card 1: Smart Search */}
+            <Reveal delay={0.05} className="h-full">
+              <div className="group h-full flex flex-col justify-between rounded-3xl bg-white/5 border border-white/10 p-8 transition-all duration-300 hover:border-gold/30 hover:bg-white/10">
+                <div>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold/15 text-gold mb-6 transition-transform group-hover:scale-105">
+                    <Sparkles className="h-6 w-6" />
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-white mb-3">Smart AI Search</h3>
+                  <p className="text-sm text-white/60 leading-relaxed">
+                    Search properties using natural, conversational language. No complex filters—simply state what you desire.
+                  </p>
+                </div>
+                <Link
+                  href="/"
+                  className="mt-8 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-gold hover:text-white transition-colors"
+                >
+                  Try Smart Search
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </Reveal>
+
+            {/* Card 2: AI Investment Planner */}
+            <Reveal delay={0.1} className="h-full">
+              <div className="group h-full flex flex-col justify-between rounded-3xl bg-white/5 border border-gold/35 p-8 transition-all duration-300 hover:border-gold hover:bg-white/10 shadow-[0_4px_30px_rgba(176,135,91,0.08)]">
+                <div>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold/30 text-gold mb-6 transition-transform group-hover:scale-105">
+                    <TrendingUp className="h-6 w-6" />
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-white mb-3">AI Investment Planner</h3>
+                  <p className="text-sm text-white/60 leading-relaxed">
+                    Project compound capital growth over tenure, model Lucknow rental yields, and draft personalized strategic AI theses.
+                  </p>
+                </div>
+                <Link
+                  href="/investment-planner"
+                  className="mt-8 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-gold hover:text-white transition-colors"
+                >
+                  Model Portfolio ROI
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </Reveal>
+
+            {/* Card 3: Instant Valuation */}
+            <Reveal delay={0.15} className="h-full">
+              <div className="group h-full flex flex-col justify-between rounded-3xl bg-white/5 border border-white/10 p-8 transition-all duration-300 hover:border-gold/30 hover:bg-white/10">
+                <div>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold/15 text-gold mb-6 transition-transform group-hover:scale-105">
+                    <LineChart className="h-6 w-6" />
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-white mb-3">AI Market Valuer</h3>
+                  <p className="text-sm text-white/60 leading-relaxed">
+                    Obtain immediate data-backed valuation ranges for property assets in Lucknow based on live micro-market transaction registries.
+                  </p>
+                </div>
+                <Link
+                  href="/valuation"
+                  className="mt-8 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-gold hover:text-white transition-colors"
+                >
+                  Estimate Value
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </Reveal>
+
+            {/* Card 4: 24/7 AI Concierge */}
+            <Reveal delay={0.2} className="h-full">
+              <div className="group h-full flex flex-col justify-between rounded-3xl bg-white/5 border border-white/10 p-8 transition-all duration-300 hover:border-gold/30 hover:bg-white/10">
+                <div>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold/15 text-gold mb-6 transition-transform group-hover:scale-105">
+                    <MessageSquare className="h-6 w-6" />
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-white mb-3">24/7 AI Concierge</h3>
+                  <p className="text-sm text-white/60 leading-relaxed">
+                    Engage with our digital expert to identify listings, answer complex regional queries, and orchestrate site inspections.
+                  </p>
+                </div>
+                <div className="mt-8 text-xs font-semibold uppercase tracking-wider text-gold">
+                  Available in Chat Widget
+                </div>
+              </div>
+            </Reveal>
           </div>
         </Container>
       </section>

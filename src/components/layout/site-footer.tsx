@@ -25,6 +25,7 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
     links: [
       { label: 'List your property', href: '/sell' },
       { label: 'Property valuation', href: '/valuation' },
+      { label: 'AI Investment Planner', href: '/investment-planner' },
     ],
   },
 ];

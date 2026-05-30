@@ -26,6 +26,7 @@ interface HeaderShellProps {
 
 const NAV: { href: string; label: string }[] = [
   { href: '/properties', label: 'Properties' },
+  { href: '/investment-planner', label: 'Investment AI' },
   { href: '/valuation', label: 'Valuation' },
   { href: '/insights', label: 'Insights' },
   { href: '/about', label: 'About' },
