@@ -23,7 +23,7 @@ const CONTACT_INFO = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'hello@akshitarealty.in',
+    value: 'Pratap.vijendrsingh96@gmail.com',
   },
   {
     icon: Clock,

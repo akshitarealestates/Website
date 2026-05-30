@@ -107,9 +107,9 @@ export function SiteFooter() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:hello@akshitarealty.in" className="flex items-start gap-2.5 transition-colors hover:text-gold">
+                  <a href="mailto:Pratap.vijendrsingh96@gmail.com" className="flex items-start gap-2.5 transition-colors hover:text-gold">
                     <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold-deep" />
-                    hello@akshitarealty.in
+                    Pratap.vijendrsingh96@gmail.com
                   </a>
                 </li>
                 <li className="flex items-start gap-2.5">
