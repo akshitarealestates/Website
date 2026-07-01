@@ -9,9 +9,28 @@ import { ConciergeWidget } from '@/components/ai/concierge-widget';
 const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-fraunces', display: 'swap' });
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans-inter', display: 'swap' });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://akshitarealestate.com';
+const title = 'Akshita Real Estate — Premium Real Estate in Lucknow';
+const description = 'Curated commercial, resell, and premium projects in Lucknow.';
+
 export const metadata: Metadata = {
-  title: 'Akshita Real Estate — Premium Real Estate in Lucknow',
-  description: 'Curated commercial, resell, and premium projects in Lucknow.',
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  alternates: { canonical: '/' },
+  openGraph: {
+    title,
+    description,
+    url: siteUrl,
+    siteName: 'Akshita Real Estate',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
