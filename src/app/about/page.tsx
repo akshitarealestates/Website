@@ -72,7 +72,7 @@ export default function AboutPage() {
             grown on <em className="italic font-normal">results</em>
           </h1>
           <p className="mt-6 max-w-xl text-white/70 leading-relaxed">
-            Since 2012, Akshita Real Estate has helped families, professionals, and investors navigate Lucknow&apos;s property market with confidence and clarity.
+            Lucknow&apos;s advanced, AI-driven real estate firm — combining local expertise with intelligent technology to deliver the best value to every customer.
           </p>
         </Container>
       </section>
@@ -90,13 +90,13 @@ export default function AboutPage() {
               />
               <div className="space-y-4 text-ink/70 leading-relaxed">
                 <p>
-                  Akshita Real Estate was founded in 2012 with a single conviction: buying or selling property in Lucknow should be a joy, not a struggle. We started as a boutique consultancy in Gomti Nagar, helping a handful of families find homes that matched their aspirations.
+                  Akshita Real Estate is Lucknow&apos;s most advanced, AI-driven real estate firm. We pair deep, on-the-ground knowledge of the city&apos;s micro-markets with intelligent technology — so buying, selling, or investing in property becomes effortless, transparent, and genuinely rewarding.
                 </p>
                 <p>
-                  Over the years, we expanded across all of Lucknow&apos;s major localities — from heritage Hazratganj to the planned elegance of Sushant Golf City. Today, with 40+ specialists and a portfolio spanning commercial, resale, and premium projects, we remain guided by the same principle our founder built us on: each client deserves personalised, expert attention.
+                  Our AI works for you at every step: conversational search that understands exactly what you want, instant data-backed valuations, an investment &amp; ROI planner, and locality insights drawn from real market signals. The result is clarity and confidence — you always know you&apos;re getting the best value, not just a listing.
                 </p>
                 <p>
-                  We are proud to have partnered with 2,600+ happy buyers and served some of Lucknow&apos;s most discerning investors, NRI clients, and first-time home buyers — all with the same respect and dedication.
+                  Above all, we are relentlessly focused on delivering the best value to our customers. From first-time home buyers to seasoned investors and NRI clients across Lucknow — from heritage Hazratganj to the planned elegance of Sushant Golf City — every recommendation we make is optimised around one goal: the smartest outcome for you.
                 </p>
               </div>
             </div>
