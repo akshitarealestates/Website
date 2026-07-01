@@ -31,12 +31,8 @@ const VALUES = [
 ];
 
 const TEAM: { name: string; role: string; image?: string }[] = [
-  { name: 'Akshita Singh', role: 'Founder & Managing Director', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80' },
   { name: 'Harshit Singh', role: 'Chief Business Officer' },
   { name: 'Vijendra Pratap Singh', role: 'Chief Technology Officer' },
-  { name: 'Rajeev Sharma', role: 'Head of Commercial', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Priya Verma', role: 'Senior Residential Advisor', image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Amit Gupta', role: 'Legal & RERA Compliance', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80' },
 ];
 
 function initials(name: string): string {
@@ -162,9 +158,9 @@ export default function AboutPage() {
             italicWord="team"
             className="mb-16"
           />
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mx-auto flex max-w-2xl flex-wrap justify-center gap-12 sm:gap-16">
             {TEAM.map((member) => (
-              <div key={member.name} className="text-center">
+              <div key={member.name} className="w-52 text-center">
                 <div className="relative h-40 w-40 mx-auto rounded-full overflow-hidden mb-5">
                   {member.image ? (
                     <Image
