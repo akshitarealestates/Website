@@ -4,7 +4,7 @@ import { ValuationTool } from '@/components/ai/valuation-tool';
 import { estimateAction, valuationLeadAction } from './actions';
 
 export const metadata = {
-  title: "What's My Property Worth? | Akshita Realty",
+  title: "What's My Property Worth? | Akshita Real Estate",
   description:
     'Get an instant AI-powered valuation estimate for your property in Lucknow based on live market rates.',
 };

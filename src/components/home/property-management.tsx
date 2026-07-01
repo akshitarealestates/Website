@@ -26,7 +26,7 @@ export function PropertyManagement() {
             <div className="relative aspect-[16/10] overflow-hidden rounded-[2.25rem] shadow-[0_30px_70px_-30px_rgba(43,33,24,0.5)] md:aspect-[16/8]">
               <Image
                 src={imageFor('management', 5)}
-                alt="Akshita Realty property management"
+                alt="Akshita Real Estate property management"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 100vw"

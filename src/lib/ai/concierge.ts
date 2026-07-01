@@ -43,7 +43,7 @@ export function respond(message: string, ctx: ConciergeContext): ConciergeResult
   if (GREETING_RE.test(lower) && !SEARCH_RE.test(lower) && !BHK_RE.test(lower)) {
     return {
       reply:
-        "Hi! I'm the Akshita Realty concierge. I can help you search listings, " +
+        "Hi! I'm the Akshita Real Estate concierge. I can help you search listings, " +
         'estimate a property valuation, or arrange a site visit.' +
         NUDGE,
     };

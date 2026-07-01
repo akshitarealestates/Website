@@ -91,7 +91,7 @@ export async function POST(req: Request) {
 
   if (aiEnabled) {
     try {
-      const prompt = `You are a Senior Real Estate Investment Advisory bot at Akshita Realty, Lucknow.
+      const prompt = `You are a Senior Real Estate Investment Advisory bot at Akshita Real Estate, Lucknow.
 Draft a highly professional, sophisticated, and data-backed Investment Thesis for an investor with the following profile:
 - Locality: ${locality.name}
 - Investment Budget: ${formattedBudget}

@@ -17,7 +17,7 @@ export function AboutCollage() {
           {/* Statement */}
           <Reveal>
             <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-gold">
-              Akshita Realty
+              Akshita Real Estate
             </p>
             <p className="max-w-xl text-pretty font-display text-[1.7rem] font-semibold leading-[1.25] text-ink md:text-[2.35rem]">
               We handle every kind of property transaction across Lucknow, giving

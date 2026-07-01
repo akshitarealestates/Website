@@ -5,8 +5,8 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Us — Akshita Realty',
-  description: 'Get in touch with Akshita Realty. Speak with a specialist about buying, selling, or renting property in Lucknow.',
+  title: 'Contact Us — Akshita Real Estate',
+  description: 'Get in touch with Akshita Real Estate. Speak with a specialist about buying, selling, or renting property in Lucknow.',
 };
 
 const CONTACT_INFO = [
@@ -18,12 +18,12 @@ const CONTACT_INFO = [
   {
     icon: Phone,
     label: 'Phone',
-    value: '+91 99999 12345',
+    value: '+91 63861 11891',
   },
   {
     icon: Mail,
     label: 'Email',
-    value: 'Pratap.vijendrsingh96@gmail.com',
+    value: 'info@akshitarealestate.com',
   },
   {
     icon: Clock,

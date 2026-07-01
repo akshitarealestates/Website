@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Our Services — Akshita Realty',
+  title: 'Our Services — Akshita Real Estate',
   description: 'Property buying, selling, resale assistance, property management, and RERA legal support in Lucknow.',
 };
 
@@ -27,7 +27,7 @@ const SERVICES = [
     title: 'Property Selling',
     icon: '📈',
     description:
-      'List your property with Akshita Realty and reach thousands of verified buyers. We handle marketing, site visits, negotiations, and paperwork.',
+      'List your property with Akshita Real Estate and reach thousands of verified buyers. We handle marketing, site visits, negotiations, and paperwork.',
     features: [
       'Professional photography & listing',
       'Buyer screening & qualification',
@@ -106,7 +106,7 @@ export default function ServicesPage() {
             Services built for <em className="italic font-normal">every journey</em>
           </h1>
           <p className="mt-6 max-w-xl text-white/70 leading-relaxed">
-            Whether you&apos;re buying your first home, selling an investment, or managing a portfolio — Akshita Realty has a dedicated service for every stage of your property journey.
+            Whether you&apos;re buying your first home, selling an investment, or managing a portfolio — Akshita Real Estate has a dedicated service for every stage of your property journey.
           </p>
         </Container>
       </section>

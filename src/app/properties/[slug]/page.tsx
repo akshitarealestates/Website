@@ -33,7 +33,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   premium_project: 'Premium Project',
 };
 
-const WHATSAPP_NUMBER = '919999999999';
+const WHATSAPP_NUMBER = '916386111891';
 
 export function generateStaticParams() {
   return listProperties().map((p) => ({ slug: p.slug }));
@@ -48,11 +48,11 @@ export async function generateMetadata({
   const property = getPropertyBySlug(slug);
 
   if (!property) {
-    return { title: 'Property not found — Akshita Realty' };
+    return { title: 'Property not found — Akshita Real Estate' };
   }
 
   return {
-    title: `${property.title} — Akshita Realty`,
+    title: `${property.title} — Akshita Real Estate`,
     description: property.description.slice(0, 160),
   };
 }

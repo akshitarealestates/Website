@@ -178,7 +178,7 @@ export function SellWizard({
         </div>
         <h2 className="font-display text-2xl font-semibold text-ink">Listing submitted!</h2>
         <p className="mt-2 max-w-md text-sm text-ink/60">
-          Thanks for listing with Akshita Realty. Your property is now in our moderation
+          Thanks for listing with Akshita Real Estate. Your property is now in our moderation
           queue. Our team will review it shortly, and once approved it will appear live on
           the site. You can track its status from your dashboard.
         </p>

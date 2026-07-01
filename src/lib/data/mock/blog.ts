@@ -9,7 +9,7 @@ export const blogPosts: BlogPost[] = [
     coverUrl: imageFor('blog-market-trends', 0),
     excerpt:
       'Lucknow\'s property market is witnessing unprecedented growth in 2026, fuelled by infrastructure upgrades, IT expansion, and rising NRI interest. Here\'s what the data says.',
-    author: 'Akshita Realty Team',
+    author: 'Akshita Real Estate Team',
     status: 'published',
     publishedAt: '2026-01-15T09:00:00.000Z',
     tags: ['market trends', 'investment', 'lucknow', '2026'],
@@ -44,7 +44,7 @@ Lucknow is no longer just a Tier-2 city investment play — it's a genuine long-
     coverUrl: imageFor('blog-locality-guide', 2),
     excerpt:
       'From heritage Hazratganj to planned Sushant Golf City, we rank Lucknow\'s top neighbourhoods by livability, infrastructure, and investment potential.',
-    author: 'Akshita Realty Team',
+    author: 'Akshita Real Estate Team',
     status: 'published',
     publishedAt: '2026-02-10T10:30:00.000Z',
     tags: ['locality guide', 'gomti nagar', 'indira nagar', 'hazratganj', 'lucknow'],
@@ -83,7 +83,7 @@ Match your neighbourhood to your life stage: young couples and professionals fav
     coverUrl: imageFor('blog-buying-guide', 4),
     excerpt:
       'Buying a home in Lucknow involves RERA checks, circle rate calculations, stamp duty, and registration. This step-by-step guide walks you through the entire process.',
-    author: 'Akshita Realty Team',
+    author: 'Akshita Real Estate Team',
     status: 'published',
     publishedAt: '2026-03-05T08:00:00.000Z',
     tags: ['buying guide', 'rera', 'stamp duty', 'registration', 'lucknow'],
@@ -118,7 +118,7 @@ Execute the Sale Deed at the sub-registrar's office (SRO) in the locality where 
     coverUrl: imageFor('blog-resale-guide', 6),
     excerpt:
       'Resale homes offer immediate possession and established neighbourhoods — but hidden liabilities and title defects can trap unwary buyers. Learn how to buy smart.',
-    author: 'Akshita Realty Team',
+    author: 'Akshita Real Estate Team',
     status: 'published',
     publishedAt: '2026-04-12T11:00:00.000Z',
     tags: ['resale', 'due diligence', 'title verification', 'ready-to-move', 'lucknow'],
@@ -144,7 +144,7 @@ Resale sellers are often more motivated than builders — many are relocating, u
 
 ## The Final Word
 
-Resale properties in Lucknow represent excellent value in 2026, provided you invest in thorough legal due diligence. Engage Akshita Realty for end-to-end assistance — from property shortlisting to registration and possession.`,
+Resale properties in Lucknow represent excellent value in 2026, provided you invest in thorough legal due diligence. Engage Akshita Real Estate for end-to-end assistance — from property shortlisting to registration and possession.`,
   },
   {
     id: 'blog-005',
@@ -153,7 +153,7 @@ Resale properties in Lucknow represent excellent value in 2026, provided you inv
     coverUrl: imageFor('blog-commercial-investing', 8),
     excerpt:
       'Lucknow\'s commercial real estate is growing at 19% annually as IT, logistics, and retail sectors expand. Here\'s how to identify, evaluate, and invest in commercial properties.',
-    author: 'Akshita Realty Team',
+    author: 'Akshita Real Estate Team',
     status: 'published',
     publishedAt: '2026-05-08T09:30:00.000Z',
     tags: ['commercial', 'investment', 'office', 'retail', 'warehousing', 'lucknow'],
@@ -179,6 +179,6 @@ Unlike residential properties, commercial real estate requires verification of: 
 
 ## Building Your Commercial Portfolio
 
-Diversify across office, retail, and logistics for a balanced commercial portfolio. Start with a Grade-A office unit in Vibhuti Khand for stable IT-tenant income, add a high-street shop in Gomti Nagar market for inflation-linked rent escalations, and consider a warehousing plot for long-term appreciation. Akshita Realty's commercial desk can assist with sourcing, negotiation, and lease management.`,
+Diversify across office, retail, and logistics for a balanced commercial portfolio. Start with a Grade-A office unit in Vibhuti Khand for stable IT-tenant income, add a high-street shop in Gomti Nagar market for inflation-linked rent escalations, and consider a warehousing plot for long-term appreciation. Akshita Real Estate's commercial desk can assist with sourcing, negotiation, and lease management.`,
   },
 ];

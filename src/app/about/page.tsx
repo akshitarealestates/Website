@@ -7,14 +7,14 @@ import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Us — Akshita Realty',
-  description: 'Premium real estate expertise in Lucknow since 2012. Learn our story, values, and the team behind Akshita Realty.',
+  title: 'About Us — Akshita Real Estate',
+  description: 'Premium real estate expertise in Lucknow since 2012. Learn our story, values, and the team behind Akshita Real Estate.',
 };
 
 const VALUES = [
   {
     title: 'Transparency',
-    body: 'Every listing on Akshita Realty is verified for accuracy. No hidden charges, no inflated prices — just honest, factual information.',
+    body: 'Every listing on Akshita Real Estate is verified for accuracy. No hidden charges, no inflated prices — just honest, factual information.',
   },
   {
     title: 'Personalisation',
@@ -47,7 +47,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 opacity-20">
           <Image
             src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1800&q=80"
-            alt="Akshita Realty"
+            alt="Akshita Real Estate"
             fill
             className="object-cover"
             sizes="100vw"
@@ -61,7 +61,7 @@ export default function AboutPage() {
             grown on <em className="italic font-normal">results</em>
           </h1>
           <p className="mt-6 max-w-xl text-white/70 leading-relaxed">
-            Since 2012, Akshita Realty has helped families, professionals, and investors navigate Lucknow&apos;s property market with confidence and clarity.
+            Since 2012, Akshita Real Estate has helped families, professionals, and investors navigate Lucknow&apos;s property market with confidence and clarity.
           </p>
         </Container>
       </section>
@@ -79,7 +79,7 @@ export default function AboutPage() {
               />
               <div className="space-y-4 text-ink/70 leading-relaxed">
                 <p>
-                  Akshita Realty was founded in 2012 with a single conviction: buying or selling property in Lucknow should be a joy, not a struggle. We started as a boutique consultancy in Gomti Nagar, helping a handful of families find homes that matched their aspirations.
+                  Akshita Real Estate was founded in 2012 with a single conviction: buying or selling property in Lucknow should be a joy, not a struggle. We started as a boutique consultancy in Gomti Nagar, helping a handful of families find homes that matched their aspirations.
                 </p>
                 <p>
                   Over the years, we expanded across all of Lucknow&apos;s major localities — from heritage Hazratganj to the planned elegance of Sushant Golf City. Today, with 40+ specialists and a portfolio spanning commercial, resale, and premium projects, we remain guided by the same principle our founder built us on: each client deserves personalised, expert attention.
@@ -92,7 +92,7 @@ export default function AboutPage() {
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl">
               <Image
                 src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=800&q=80"
-                alt="Akshita Realty office"
+                alt="Akshita Real Estate office"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"

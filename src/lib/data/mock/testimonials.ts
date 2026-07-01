@@ -11,7 +11,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 'tst-001',
     quote:
-      'We had been searching for a 3 BHK in Gomti Nagar for months. Akshita Realty understood exactly what we wanted and closed the deal in three weeks — paperwork, registry and all.',
+      'We had been searching for a 3 BHK in Gomti Nagar for months. Akshita Real Estate understood exactly what we wanted and closed the deal in three weeks — paperwork, registry and all.',
     name: 'Ananya & Rohit Saxena',
     role: 'Home buyers',
     locality: 'Gomti Nagar',

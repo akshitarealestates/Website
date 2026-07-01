@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
@@ -40,33 +41,6 @@ const PROPERTY_MENU: { href: string; label: string }[] = [
   { href: '/properties?category=premium_project', label: 'Premium Projects' },
 ];
 
-/** Elegant geometric monogram — a refined diamond-cut "A". */
-function Monogram({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 32 32"
-      fill="none"
-      className={className}
-      aria-hidden="true"
-    >
-      <rect
-        x="2"
-        y="2"
-        width="28"
-        height="28"
-        rx="6"
-        className="stroke-current"
-        strokeWidth="1.25"
-        opacity="0.6"
-      />
-      <path
-        d="M16 8 L23 24 H19.4 L18 20.4 H14 L12.6 24 H9 L16 8 Z M16 13.4 L14.9 17.4 H17.1 L16 13.4 Z"
-        className="fill-current"
-      />
-    </svg>
-  );
-}
-
 export function HeaderShell({ user }: HeaderShellProps) {
   const pathname = usePathname();
   const isHome = pathname === '/';
@@ -102,17 +76,17 @@ export function HeaderShell({ user }: HeaderShellProps) {
         {/* Logo lockup */}
         <Link
           href="/"
-          aria-label="Akshita Realty — home"
-          className={[
-            'group flex items-center gap-2.5 transition-colors',
-            onDark ? 'text-white' : 'text-ink',
-          ].join(' ')}
+          aria-label="Akshita Real Estate — home"
+          className="group flex items-center transition-transform duration-500 ease-luxe hover:scale-[1.02]"
         >
-          <Monogram className="h-8 w-8 text-gold transition-transform duration-500 ease-luxe group-hover:scale-105" />
-          <span className="font-display text-xl leading-none tracking-tight">
-            <span className="font-semibold">Akshita</span>{' '}
-            <span className="font-light italic opacity-90">Realty</span>
-          </span>
+          <Image
+            src={onDark ? '/logo-white.png' : '/logo.png'}
+            alt="Akshita Real Estate"
+            width={997}
+            height={669}
+            priority
+            className="h-11 w-auto md:h-12"
+          />
         </Link>
 
         {/* Desktop nav */}
@@ -210,12 +184,14 @@ export function HeaderShell({ user }: HeaderShellProps) {
               className="w-[86vw] max-w-sm border-l border-black/5 bg-cream-warm"
             >
               <SheetHeader>
-                <SheetTitle className="flex items-center gap-2.5 font-display text-lg text-ink">
-                  <Monogram className="h-7 w-7 text-gold" />
-                  <span>
-                    <span className="font-semibold">Akshita</span>{' '}
-                    <span className="font-light italic">Realty</span>
-                  </span>
+                <SheetTitle className="flex items-center">
+                  <Image
+                    src="/logo.png"
+                    alt="Akshita Real Estate"
+                    width={997}
+                    height={669}
+                    className="h-10 w-auto"
+                  />
                 </SheetTitle>
               </SheetHeader>
 

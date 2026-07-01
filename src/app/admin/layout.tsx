@@ -20,7 +20,7 @@ export default async function AdminLayout({
         <div className="flex flex-col gap-6 px-5 py-6 lg:h-full">
           <Link href="/admin" className="flex flex-col">
             <span className="font-display text-xl font-semibold tracking-tight">
-              Akshita <span className="text-gold">Realty</span>
+              Akshita <span className="text-gold">Real Estate</span>
             </span>
             <span className="text-xs uppercase tracking-[0.2em] text-cream/50">
               Admin

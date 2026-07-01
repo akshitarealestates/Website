@@ -10,7 +10,7 @@ const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-fraunces', dis
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans-inter', display: 'swap' });
 
 export const metadata: Metadata = {
-  title: 'Akshita Realty — Premium Real Estate in Lucknow',
+  title: 'Akshita Real Estate — Premium Real Estate in Lucknow',
   description: 'Curated commercial, resell, and premium projects in Lucknow.',
 };
 

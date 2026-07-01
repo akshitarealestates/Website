@@ -37,7 +37,7 @@ function formatINR(amount: number): string {
 const GREETING: ChatMessage = {
   role: 'assistant',
   content:
-    "Hi! I'm the Akshita Realty concierge. I can help you search listings, estimate a valuation, or arrange a site visit. What are you looking for?",
+    "Hi! I'm the Akshita Real Estate concierge. I can help you search listings, estimate a valuation, or arrange a site visit. What are you looking for?",
 };
 
 // Heuristic: the assistant is requesting contact details.
@@ -146,7 +146,7 @@ export function ConciergeWidget() {
       {open && (
         <div
           role="dialog"
-          aria-label="Akshita Realty concierge"
+          aria-label="Akshita Real Estate concierge"
           className="fixed bottom-24 right-5 z-50 flex max-h-[70vh] w-[360px] max-w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/10"
         >
           {/* Header */}

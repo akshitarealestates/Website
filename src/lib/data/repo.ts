@@ -417,7 +417,7 @@ export function createBlogPost(
     coverUrl: input.coverUrl ?? imageFor(slug, 0),
     excerpt: input.excerpt ?? '',
     body: input.body ?? '',
-    author: input.author ?? 'Akshita Realty Team',
+    author: input.author ?? 'Akshita Real Estate Team',
     status: input.status ?? 'draft',
     publishedAt: input.publishedAt ?? new Date().toISOString(),
     tags: input.tags ?? [],

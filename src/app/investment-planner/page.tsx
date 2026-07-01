@@ -4,7 +4,7 @@ import { InvestmentPlanner } from '@/components/ai/investment-planner';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'AI Property Investment & ROI Planner | Akshita Realty',
+  title: 'AI Property Investment & ROI Planner | Akshita Real Estate',
   description:
     'Leverage premium data projections and our advanced AI engine to calculate future valuations, rental yields, and custom real estate investment theses in Lucknow.',
 };

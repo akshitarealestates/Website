@@ -73,7 +73,7 @@ export async function POST(req: Request) {
       const { text } = await generateText({
         model: aiModel,
         system:
-          "You are Akshita Realty's concierge for Lucknow real estate. " +
+          "You are Akshita Real Estate's concierge for Lucknow real estate. " +
           'Be concise, warm, and helpful. Two or three sentences at most. ' +
           'You can help search listings, estimate valuations/EMI, share locality insight, ' +
           'and arrange site visits. Do not invent specific prices or listings.',

@@ -58,7 +58,7 @@ function buildBlogInput(fd: FormData): {
     coverUrl: str(fd, 'coverUrl') ?? '',
     excerpt: str(fd, 'excerpt') ?? '',
     body: body!,
-    author: str(fd, 'author') ?? 'Akshita Realty Team',
+    author: str(fd, 'author') ?? 'Akshita Real Estate Team',
     status,
     publishedAt,
     tags: csvList(fd, 'tags'),

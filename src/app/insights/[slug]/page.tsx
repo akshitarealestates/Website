@@ -20,11 +20,11 @@ export async function generateMetadata({
   const post = getBlogPostBySlug(slug);
 
   if (!post || post.status !== 'published') {
-    return { title: 'Article not found — Akshita Realty' };
+    return { title: 'Article not found — Akshita Real Estate' };
   }
 
   return {
-    title: `${post.title} — Akshita Realty`,
+    title: `${post.title} — Akshita Real Estate`,
     description: post.excerpt,
   };
 }
@@ -158,7 +158,7 @@ export default async function InsightArticlePage({
               Ready to invest?
             </p>
             <h2 className="font-display text-2xl font-semibold leading-tight">
-              Speak with an Akshita Realty advisor
+              Speak with an Akshita Real Estate advisor
             </h2>
             <p className="mt-3 text-white/60 leading-relaxed max-w-xl">
               Get personalised guidance on buying, selling, or investing in

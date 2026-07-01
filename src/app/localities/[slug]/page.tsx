@@ -25,11 +25,11 @@ export async function generateMetadata({
   const locality = getLocalityBySlug(slug);
 
   if (!locality) {
-    return { title: 'Locality not found — Akshita Realty' };
+    return { title: 'Locality not found — Akshita Real Estate' };
   }
 
   return {
-    title: `${locality.name} Real Estate — Akshita Realty`,
+    title: `${locality.name} Real Estate — Akshita Real Estate`,
     description: locality.description.slice(0, 160),
   };
 }

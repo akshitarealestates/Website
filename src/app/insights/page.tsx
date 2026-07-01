@@ -6,9 +6,9 @@ import { Container } from '@/components/ui-kit/container';
 import { SectionHeading } from '@/components/ui-kit/section-heading';
 
 export const metadata: Metadata = {
-  title: 'Insights — Akshita Realty',
+  title: 'Insights — Akshita Real Estate',
   description:
-    'Expert analysis, locality guides, and buying advice from the Akshita Realty team.',
+    'Expert analysis, locality guides, and buying advice from the Akshita Real Estate team.',
 };
 
 function formatDate(iso: string): string {
@@ -31,7 +31,7 @@ export default function InsightsPage() {
           />
           <p className="mt-4 max-w-xl text-white/60 leading-relaxed">
             Market trends, locality guides, and step-by-step buying advice from
-            the Akshita Realty team.
+            the Akshita Real Estate team.
           </p>
         </Container>
       </div>

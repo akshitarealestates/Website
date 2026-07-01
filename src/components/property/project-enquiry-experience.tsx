@@ -7,7 +7,7 @@ import { formatINR, formatArea } from '@/lib/format';
 import { EnquiryForm } from './enquiry-form';
 import { FavoriteButton } from './favorite-button';
 
-const WHATSAPP_NUMBER = '919999999999';
+const WHATSAPP_NUMBER = '916386111891';
 
 const AVAILABILITY: Record<
   NonNullable<ProjectConfiguration['availability']>,

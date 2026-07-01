@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
 import { InstagramIcon, FacebookIcon, LinkedinIcon, XIcon } from '@/components/icons/social';
@@ -44,7 +45,13 @@ export function SiteFooter() {
         <div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]">
           {/* Brand + newsletter */}
           <div className="max-w-sm">
-            <p className="font-display text-2xl font-semibold text-white">Akshita Realty</p>
+            <Image
+              src="/logo-white.png"
+              alt="Akshita Real Estate"
+              width={997}
+              height={669}
+              className="h-14 w-auto"
+            />
             <p className="mt-3 text-sm leading-relaxed text-white/60">
               Premium real estate in Lucknow — handpicked homes, verified listings, and a
               personal touch through every step of your property journey.
@@ -101,15 +108,15 @@ export function SiteFooter() {
               <p className="mb-4 text-xs uppercase tracking-[0.18em] text-white/45">Get in touch</p>
               <ul className="space-y-3 text-white/70">
                 <li>
-                  <a href="tel:+915221234567" className="flex items-start gap-2.5 transition-colors hover:text-gold">
+                  <a href="tel:+916386111891" className="flex items-start gap-2.5 transition-colors hover:text-gold">
                     <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold-deep" />
-                    +91 522 123 4567
+                    +91 63861 11891
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:Pratap.vijendrsingh96@gmail.com" className="flex items-start gap-2.5 transition-colors hover:text-gold">
+                  <a href="mailto:info@akshitarealestate.com" className="flex items-start gap-2.5 transition-colors hover:text-gold">
                     <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold-deep" />
-                    Pratap.vijendrsingh96@gmail.com
+                    info@akshitarealestate.com
                   </a>
                 </li>
                 <li className="flex items-start gap-2.5">
@@ -141,7 +148,7 @@ export function SiteFooter() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-5 text-xs text-white/50 sm:flex-row">
-          <p>© {new Date().getFullYear()} Akshita Realty. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Akshita Real Estate. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/privacy" className="transition-colors hover:text-white/80">Privacy</Link>
             <Link href="/terms" className="transition-colors hover:text-white/80">Terms</Link>

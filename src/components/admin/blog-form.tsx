@@ -152,7 +152,7 @@ export function BlogForm({
             <input
               id="author"
               name="author"
-              defaultValue={initial?.author ?? 'Akshita Realty Team'}
+              defaultValue={initial?.author ?? 'Akshita Real Estate Team'}
               className={inputCls}
             />
           </Field>
