@@ -75,7 +75,8 @@
       "Bash(sed -n '1,15p' src/components/property/favorite-button.tsx)",
       "Bash(sed -n '1,20p' src/components/property/gallery.tsx)",
       "Bash(curl -s -D - -o /dev/null \"http://localhost:3000/admin/properties/prestige-golf-residences-sushant/edit\")",
-      "Bash(pkill -f \"next-server\")"
+      "Bash(pkill -f \"next-server\")",
+      "Bash(git remote *)"
     ],
     "additionalDirectories": [
       "/tmp"
