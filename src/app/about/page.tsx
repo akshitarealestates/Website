@@ -30,12 +30,23 @@ const VALUES = [
   },
 ];
 
-const TEAM = [
+const TEAM: { name: string; role: string; image?: string }[] = [
   { name: 'Akshita Singh', role: 'Founder & Managing Director', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80' },
+  { name: 'Harshit Singh', role: 'Chief Business Officer' },
+  { name: 'Vijendra Pratap Singh', role: 'Chief Technology Officer' },
   { name: 'Rajeev Sharma', role: 'Head of Commercial', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80' },
   { name: 'Priya Verma', role: 'Senior Residential Advisor', image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80' },
   { name: 'Amit Gupta', role: 'Legal & RERA Compliance', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80' },
 ];
+
+function initials(name: string): string {
+  return name
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? '')
+    .join('');
+}
 
 export default function AboutPage() {
   const localities = listLocalities();
@@ -155,13 +166,19 @@ export default function AboutPage() {
             {TEAM.map((member) => (
               <div key={member.name} className="text-center">
                 <div className="relative h-40 w-40 mx-auto rounded-full overflow-hidden mb-5">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover"
-                    sizes="160px"
-                  />
+                  {member.image ? (
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                      sizes="160px"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-ink to-gold-deep font-display text-4xl font-semibold text-cream">
+                      {initials(member.name)}
+                    </div>
+                  )}
                 </div>
                 <p className="font-display text-lg font-semibold text-ink">{member.name}</p>
                 <p className="text-sm text-ink/50 mt-1">{member.role}</p>
